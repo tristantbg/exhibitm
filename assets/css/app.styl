@@ -1,0 +1,184 @@
+@import 'nib'
+@import '../../node_modules/jeet/stylus/jeet/*'
+@import '_mixins.styl'
+
+// Media queries
+$xl = 1600px
+$lg = 1260px
+$md = 1023px
+$sm = 767px
+
+// Colors
+$primary ?= #000
+$secondary ?= #fff
+$accent ?= #ff0000
+
+// Metrics
+$padding = 3rem
+$spaceBetween = 10rem
+$kinetic = cubic-bezier(0.77, 0, 0.175, 1)
+
+// CSS Reset
+global-reset()
+
+webfont('PalatinoLTStdRoman', 'PalatinoLTStdRoman', true, 'normal')
+webfont('DINCondensedBold', 'DINCondensedBold', true, 'normal')
+
+body,html
+	width 100%
+	-webkit-text-size-adjust 100%
+	background $primary
+
+html
+	font-size 62.5%
+
+body
+	font-family 'PalatinoLTStdRoman', Helvetica Neue, Arial, sans-serif
+	font-size 2rem
+	text-rendering optimizeLegibility
+	font-smoothing()
+	color $secondary
+
+p
+	margin-bottom 1em
+	line-height 130%
+
+p:last-child
+	margin-bottom 0
+
+em
+	font-style italic
+
+h1, h2, .selector, .lead, .exergue
+	text-transform uppercase
+	font-family 'DINCondensedBold'
+
+h1.title
+	font-size 9rem
+
+h1, h2, .selector
+	font-size 3.1rem
+
+#mainSelector ul li, .exergue
+	font-size 4.5rem
+
+.lead
+	font-size 2.5rem
+
+.small, #selectorHelp
+	font-size 1.4rem
+
+::selection
+	background $secondary
+	
+::-moz-selection
+	background $secondary
+
+*
+	hideselect()
+	box-sizing(border-box)
+
+a, a:hover, a:visited, a:focus
+	color inherit
+	text-decoration none
+	cursor pointer
+
+.lazyimg
+	transition(opacity 600ms ease)
+	opacity 0
+
+.lazyimg.lazyloaded
+	opacity 1
+
+.kirby-plugin-oembed__thumb>img
+	transition(all 300ms ease)
+	opacity 1
+	max-width 100px
+
+.kirby-plugin-oembed__thumb:hover>img
+	filter(drop-shadow(0 0 8px alpha($secondary,0.7)))
+
+.kirby-plugin-oembed--video
+	background $primary
+
+.row
+	span(1)
+
+.cf
+	clearfix()
+
+for n in 1..12
+	.grid-item.col-{n}
+		col(n/12)
+		+below($md)
+			stack()
+	.grid-item.span-{n}
+		span(n/12)
+		+below($md)
+			stack()
+	for i in 1..12
+		.grid-item.span-{n}.off-{i}
+			span(n/12, offset: i/12)
+			+below($md)
+				stack()
+
+for n in 1..10
+	.pt-{n}
+		padding-top (n * 1rem)
+	.pb-{n}
+		padding-bottom (n * 1rem)
+
+.left
+	text-align left !important
+
+.center
+	text-align center !important
+	
+.right
+	text-align right !important
+
+.fit-h
+	height 100vh
+	padding 5.2rem 0
+	text-align center !important
+	img
+		display inline-block
+		width auto
+		height 100%
+
+@import 'loader.styl'
+@import 'selector.styl'
+
+header
+	position fixed
+	width 100%
+	top 0
+	left 0
+	padding $padding 0
+	text-align center
+	z-index 1000
+
+#container
+	span(1)
+	padding 0 12.5%
+
+#page-content
+	span(1)
+	#page-infos
+		margin-top 20rem
+	section:not(:first-child), .image-content:not(:first-child):not(.fit-h)
+		span(1)
+		margin-top $spaceBetween
+	section:last-child, .image-content:last-child:not(.fit-h)
+		margin-bottom $spaceBetween
+	section.exergue-section + section
+		margin-top 0
+	section.exergue-section
+		margin 2rem 0
+		.exergue
+			span(1/2)
+			margin-left 60%
+	section.interview-section
+		.answer
+			margin-top 1em
+			margin-left 3em
