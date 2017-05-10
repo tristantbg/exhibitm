@@ -109,15 +109,15 @@ a, a:hover, a:visited, a:focus
 .lazyimg.lazyloaded
 	opacity 1
 
-.kirby-plugin-oembed__thumb>img
+.embed.embed__thumb>img
 	transition(all 300ms ease)
 	opacity 1
 	max-width 100px
 
-.kirby-plugin-oembed__thumb:hover>img
+.embed.embed__thumb:hover>img
 	filter(drop-shadow(0 0 8px alpha($secondary,0.7)))
 
-.kirby-plugin-oembed--video
+.embed.embed--video
 	background $primary
 
 .row
@@ -175,6 +175,18 @@ header
 	padding $padding 0
 	text-align center
 	z-index 1000
+	#site-title
+		position relative
+		z-index 10
+	&::before
+		content ''
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 12rem
+		z-index 0
+		background linear-gradient(180deg,rgba(0,0,0,.8) 15%,rgba(0,0,0,0) 100%)
 
 #container
 	span(1)
@@ -188,6 +200,10 @@ header
 		margin-bottom $spaceBetween
 		p
 			padding 0 10%
+		.embed.embed--video
+			width 80%
+			margin-left auto
+			margin-right auto
 	section:not(:first-child), .image-content:not(:first-child):not(.fit-h)
 		span(1)
 		margin-top $spaceBetween

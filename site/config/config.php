@@ -32,7 +32,8 @@ c::set('iwant', ['I want', 'Give me', 'I yearn for', 'Show me', 'Let me see', 'I
 c::set('now', ['Now', 'Right now', 'Please', 'Right away', 'Immediately', 'At once', 'Promptly']);
 
 c::set('debug', true);
-c::set('oembed.lazyvideo', true);
+c::set('plugin.embed.video.lazyload', true);
+c::set('plugin.embed.video.lazyload.btn', 'assets/images/play.png');
 c::set('kirbytext.image.figure', false);
 //Typo
 c::set('typography', true);
