@@ -75,13 +75,8 @@
 	</div>
 </div>
 
-<div class="loader">
-	<!-- <div class="spinner">
-		<svg class="circular" viewBox="25 25 50 50">
-		<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="1" stroke-miterlimit="10"></circle>
-		</svg>
-	</div> -->
-	<h1><?= $page->theme()->html() ?></h1>
+<div class="loader"<?php e($themeBackColor, ' style="background-color: '.$themeBackColor.'; color: '.$themeTextColor.'"') ?>>
+	<h1><?= $loaderTitle ?></h1>
 </div>
 
 <header>

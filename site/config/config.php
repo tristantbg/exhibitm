@@ -33,12 +33,13 @@ c::set('now', ['Now', 'Right now', 'Please', 'Right away', 'Immediately', 'At on
 
 c::set('debug', true);
 c::set('oembed.lazyvideo', true);
+c::set('kirbytext.image.figure', false);
 //Typo
-c::set('typography', false);
+c::set('typography', true);
 c::set('typography.ordinal.suffix', false);
 c::set('typography.fractions', false);
 c::set('typography.dashes.spacing', false);
-c::set('typography.hyphenation', true);
+c::set('typography.hyphenation', false);
 //c::set('typography.hyphenation.language', 'fr');
 //c::set('typography.hyphenation.minlength', 5);
 c::set('typography.hyphenation.headings', false);
@@ -46,7 +47,6 @@ c::set('typography.hyphenation.allcaps', false);
 c::set('typography.hyphenation.titlecase', false);
 //Settings
 c::set('sitemap.exclude', array('error'));
-c::set('sitemap.important', array('contact'));
 c::set('thumb.quality', 100);
 //c::set('thumbs.driver', 'im');
 c::set('routes', array(

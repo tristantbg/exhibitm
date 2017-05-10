@@ -1,0 +1,54 @@
+#selectorSubmit
+	cursor pointer
+
+#mainSelector
+	position relative
+	text-align center
+	height 100vh
+	#selectorTitle, #selectorSubmit, #selectorHelp
+		position absolute
+		width 100%
+		left 0
+	#selectorTitle
+		top 20%
+	#selectorSubmit
+		bottom 20%
+	#selectorHelp
+		bottom $padding
+	.groupSelector
+		span(1/3)
+		height 100vh
+		ul
+			position relative
+			z-index 100
+
+#smallSelector
+	padding ($padding/2) 0
+	#selectorTitle, #selectorSubmit
+		span(1/8)
+	.groupSelector
+		span(1/4)
+
+#mainSelector, #smallSelector
+	.groupSelector
+		text-align center
+		flexbox()
+		justify-content center
+		align-items center
+		flex-direction column
+		ul.selector
+			position relative
+			z-index 100
+			li
+				cursor pointer
+			li:not(.selected)
+				display none
+		ul.selector.is-selecting
+			cursor url('../../images/close-w.png') 8 8, default
+			li
+				cursor url('../../images/close-w.png') 8 8, default
+		ul.selector:not(.is-selecting):hover
+			li[default]
+				display none
+			li
+				display block

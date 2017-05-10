@@ -1,6 +1,8 @@
 /* globals $:false */
 var width = $(window).width(),
     height = $(window).height(),
+    $json = {},
+    firstSelectInit = true,
     filters = {},
     filterValue = "",
     isMobile = false,
@@ -23,6 +25,11 @@ $(function() {
                 //         app.loadContent(State.url + '/ajax', slidecontainer);
                 //     }
                 // });
+                $body.on('click', '.interview-section .question', function(event) {
+                  event.preventDefault();
+                  $(this).parent().toggleClass('open');
+                  $(this).next('.answer').slideToggle(300);
+                });
                 $(document).keyup(function(e) {
                     //esc
                     if (e.keyCode === 27) app.goIndex();
@@ -34,9 +41,12 @@ $(function() {
                 app.initSelector();
                 app.sectionsMagnet();
                 $(window).load(function() {
-                    $(".loader").fadeOut("fast", function() {
-                        app.loopTitles();
-                    });
+                    setTimeout(function() {
+                        $(".loader").fadeOut("fast", function() {
+                            $body.addClass('loaded');
+                            app.loopTitles();
+                        });
+                    }, 1000);
                 });
             });
         },
@@ -55,20 +65,24 @@ $(function() {
             if (typeof loopTitles1 != 'undefined' && typeof loopTitles2 != 'undefined') {
                 var $text1 = $('#selectorTitle h1'),
                     $text2 = $('#selectorSubmit h1'),
-                    copy1 = [],
-                    copy2 = [],
-                    delay = 2; //seconds
-                function loop() {
-                    if (copy1.length === 0) {
-                        copy1 = loopTitles1.slice();
-                    }
-                    if (copy2.length === 0) {
-                        copy2 = loopTitles2.slice();
-                    }
-                    $text1.html(copy1.splice(Math.random() * copy1.length, 1)[0]);
-                    $text2.html(copy2.splice(Math.random() * copy2.length, 1)[0]);
-                }
+                    copy1 = loopTitles1.slice(),
+                    copy2 = loopTitles2.slice(),
+                    delay = 1.5; //seconds
+                //remove first element
+                copy1.shift();
+                copy2.shift();
                 setInterval(loop, delay * 1E3);
+            }
+
+            function loop() {
+                if (copy1.length === 0) {
+                    copy1 = loopTitles1.slice();
+                }
+                if (copy2.length === 0) {
+                    copy2 = loopTitles2.slice();
+                }
+                $text1.html(copy1.splice(Math.random() * copy1.length, 1)[0]);
+                $text2.html(copy2.splice(Math.random() * copy2.length, 1)[0]);
             }
         },
         initSelector: function() {
@@ -97,17 +111,21 @@ $(function() {
                 event.preventDefault();
                 if (filters.theme == '' && filters.media == '' && filters.author == '') {
                     return;
-                } else if (filters.theme == '' && filters.media == '' && filters.author != '') {
+                } else if ($json.length < 2) {
+                    window.location.href = $json[0].url;
+                } else if (isInArray(['','every'], filters.theme) && isInArray(['','every'], filters.media) && filters.author != '') {
                     window.location.href = $root + "/projects/" + filters.author;
-                } else if (filters.theme != '' && filters.media != '' && filters.author != '') {
-                    $.ajax({
-                        url: $root + "/api/random" + filterValue,
-                        dataType: "json",
-                        success: function(data) {
-                            window.location.href = data.url;
-                        }
-                    });
-                } else {
+                } 
+                // else if (filters.theme != '' && filters.media != '' && filters.author != '') {
+                //     $.ajax({
+                //         url: $root + "/api/random" + filterValue,
+                //         dataType: "json",
+                //         success: function(data) {
+                //             window.location.href = data.url;
+                //         }
+                //     });
+                // } 
+                else {
                     window.location.href = $root + "/projects" + filterValue;
                 }
             });
@@ -123,24 +141,32 @@ $(function() {
             el.find('[default]').addClass('selected');
             el.removeClass('is-selecting').parent().trigger('change');
         },
-        updateFilters: function(theme, media, author) {
+        updateFilters: function(resetTheme, resetMedia, resetAuthor) {
             filters.theme = $('#themeSelector').find('.selected').data('value');
             filters.media = $('#mediaSelector').find('.selected').data('value');
             filters.author = $('#authorSelector').find('.selected').data('value');
-            if (theme) filters.theme = '';
-            if (media) filters.media = '';
-            if (author) filters.author = '';
+            if (resetTheme) filters.theme = '';
+            if (resetMedia) filters.media = '';
+            if (resetAuthor) filters.author = '';
             // combine filters
             filterValue = app.concatValues(filters);
             console.log(filterValue);
             app.loadAllSelectors(filterValue);
         },
         loadAllSelectors: function(filter) {
+            if (!firstSelectInit && filters.theme != '' && filters.media != '' && filters.author != '') {
+                $body.addClass('leaving');
+                setTimeout(function() {
+                    $('#selectorSubmit').trigger('click');
+                }, 500);
+                return;
+            }
             $.ajax({
                 url: $root + "/api/projects" + filter,
                 dataType: "json",
                 success: function(data) {
                     //themes
+                    $json = data;
                     var newList = $();
                     var uniq = [];
                     $current = $theme.find('.selected').data('value');
@@ -173,10 +199,10 @@ $(function() {
                             uniq.push(this.media.slug);
                         }
                     });
-                    if (!isInArray(uniq, $current)) {
-                        $media.find('[default]').addClass('selected');
-                    } else {
+                    if (isInArray(uniq, $current) || isInArray(['every'], $current)) {
                         $media.children('[data-value="' + $current + '"]').addClass('selected');
+                    } else {
+                        $media.find('[default]').addClass('selected');
                     }
                     //authors
                     newList = $();
@@ -199,6 +225,7 @@ $(function() {
                     }
                 }
             });
+            firstSelectInit = false;
         },
         sectionsMagnet: function() {
             $('#page-content.magnet').fullpage({
@@ -212,10 +239,10 @@ $(function() {
                 loopHorizontal: true,
                 continuousVertical: false,
                 continuousHorizontal: false,
-                scrollOverflow: false,
+                scrollOverflow: true,
                 scrollOverflowReset: false,
                 scrollOverflowOptions: null,
-                touchSensitivity: 15,
+                touchSensitivity: 5,
                 normalScrollElementTouchThreshold: 5,
                 bigSectionsDestination: null,
                 controlArrows: false,

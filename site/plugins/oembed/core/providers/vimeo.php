@@ -54,7 +54,7 @@ class Vimeo extends Provider {
   //  Remove thumbOverlay
   // ================================================
 
-  public function supportsPlayBtn() { return false; }
+  public function supportsPlayBtn() { return true; }
 
 
 }

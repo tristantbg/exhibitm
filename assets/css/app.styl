@@ -21,8 +21,10 @@ $kinetic = cubic-bezier(0.77, 0, 0.175, 1)
 // CSS Reset
 global-reset()
 
-webfont('PalatinoLTStdRoman', 'PalatinoLTStdRoman', true, 'normal')
-webfont('DINCondensedBold', 'DINCondensedBold', true, 'normal')
+webfont('DINCondensedBold', 'DINCondensedBold', false, 'normal')
+webfont('PalatinoLTStdRoman', 'PalatinoLTStdRoman', false, 'normal')
+webfont('PalatinoLTStdItalic', 'PalatinoLTStdItalic', false, 'italic')
+webfont('PalatinoLTStdBold', 'PalatinoLTStdBold', false, 'normal')
 
 body,html
 	width 100%
@@ -38,6 +40,7 @@ body
 	text-rendering optimizeLegibility
 	font-smoothing()
 	color $secondary
+	overflow hidden
 
 p
 	margin-bottom 1em
@@ -47,7 +50,23 @@ p:last-child
 	margin-bottom 0
 
 em
+	font-family 'PalatinoLTStdItalic'
 	font-style italic
+
+strong
+	font-family 'PalatinoLTStdBold'
+
+.lead strong
+	font-family 'DINCondensedBold'
+	position relative
+	&::after
+		content ''
+		position absolute
+		bottom 0
+		left 0
+		height 2px
+		width 100%
+		background $secondary
 
 h1, h2, .selector, .lead, .exergue
 	text-transform uppercase
@@ -138,13 +157,12 @@ for n in 1..10
 	text-align right !important
 
 .fit-h
-	height 100vh
-	padding 5.2rem 0
 	text-align center !important
 	img
 		display inline-block
 		width auto
-		height 100%
+		height 100vh
+		padding 11.5rem 0 3rem
 
 @import 'loader.styl'
 @import 'selector.styl'
@@ -166,19 +184,94 @@ header
 	span(1)
 	#page-infos
 		margin-top 20rem
+	#essay-content
+		margin-bottom $spaceBetween
+		p
+			padding 0 10%
 	section:not(:first-child), .image-content:not(:first-child):not(.fit-h)
 		span(1)
 		margin-top $spaceBetween
 	section:last-child, .image-content:last-child:not(.fit-h)
 		margin-bottom $spaceBetween
-	section.exergue-section + section
-		margin-top 0
 	section.exergue-section
-		margin 2rem 0
-		.exergue
+		margin 1rem 0
+	p + section.exergue-section
+		margin-top 0
+		.exergue, .exergue.align-right
+			span(1/2, offset: 1/2)
+		.exergue.align-center
+			span(1/2, offset: 1/4)
+			text-align center
+		.exergue.align-left
 			span(1/2)
-			margin-left 60%
 	section.interview-section
+		margin-top 0
+		.question
+			width 70%
+			position relative
+			padding-left 1.2em
+			margin-bottom 1em
+			cursor pointer
+			&::before
+				content url(../../images/itw-arrow.svg)
+				transform-origin center
+				position absolute
+				top .2em
+				left 0
+				width .8em
 		.answer
-			margin-top 1em
+			display none
+			margin-bottom 1em
 			margin-left 3em
+		&.open
+			.question::before
+				transform(rotate(180deg) translateY(30%))
+
+#related-projects
+	margin-bottom $spaceBetween
+	text-align center
+	.project-item
+		col(1/3, cycle: 3)
+		display inline-block
+		position relative
+		cursor pointer
+		margin-bottom 3%
+		min-height 35vw
+		img
+			transition(opacity 2000ms ease)
+			opacity 0.7
+		a
+			display block
+		.overlay
+			transition(opacity 300ms ease)
+			opacity 1
+			//background alpha($primary,0.2)
+			position absolute
+			top 0
+			left 0
+			height 100%
+			width 100%
+			text-align center
+			.inner
+				align(vertical)
+				position relative
+				width 90%
+				margin-left auto
+				margin-right auto
+	.project-item:hover
+		img
+			opacity 1
+		.overlay
+			opacity 0
+
+body.loaded
+	overflow initial
+
+body.leaving
+	cursor wait
+	#mainSelector, #smallSelector
+		.groupSelector
+			ul.selector.is-selecting
+				cursor wait
+				li
+					cursor wait
