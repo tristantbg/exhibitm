@@ -28,16 +28,17 @@
 	</div>
 
 	<div id="selectorHelp">
-		<div class="row center"><h2 event-target="feed">What's new ?</h2></div>
+		<div class="grid-item col-4 left">I don't understand</div>
+		<div class="grid-item col-4 center">What's new ?</div>
+		<div class="grid-item col-4 right"><a href="<?= $projectsPage->url() ?>">I don't have time for this</a></div>
 	</div>
 
 </div>
 
-<div id="feed">
-	<script src="//assets.juicer.io/embed.js" type="text/javascript"></script>
-	<link href="//assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
-	<ul class="juicer-feed" data-feed-id="exhibit"></ul>
-</div>
+<script>
+	var loopTitles1 = <?= json_encode($iwant) ?>,
+		loopTitles2 = <?= json_encode($now) ?>;
+</script>
 
 
 

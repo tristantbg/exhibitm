@@ -30,7 +30,7 @@
 		<?php $caption = $page->title()->html().', '.$image->caption()->html().' — © '.$site->title()->html(); ?>
 	<?php endif ?>
 
-	<div class="image-content section-magnet grid-item span-12 fit-h">
+	<div class="image-content section-magnet grid-item span-12 fit-h<?= ' '.$image->itemsize() ?>">
 
 		<?php if($image->videolink()->isNotEmpty()): ?>
 				<?= $image->videolink()->oembed([

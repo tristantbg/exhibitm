@@ -43,12 +43,61 @@
 			z-index 100
 			li
 				cursor pointer
-			li:not(.selected)
-				display none
+				position relative
+				display inline-block
+				&::after
+					content ''
+					position absolute
+					width calc(100% + .2em)
+					height 100%
+					background $secondary
+					top -.15em
+					left -.1em
+					z-index -1
+					transform-origin bottom
+					transform(scaleY(0))
+				span
+					position relative
+				span.mask
+					position absolute
+					left 0
+					bottom 0
+					color $primary
+					transform(scaleY(0))
+					transform-origin center
+					&::after
+						content ''
+						position absolute
+						width calc(100% + .2em)
+						height 100%
+						background $secondary
+						top -.15em
+						left -.1em
+						z-index -1
+						transform-origin bottom
+						//transform(scaleY(0))
+				&:not(.selected)
+					display none
+				&.selected
+					&::after
+						transform(scaleY(0.05))
+				&:hover:not(.selected)
+					span.mask
+						//transition(transform 100ms $kinetic)
+						//transition-delay(100ms)
+						transform(scaleY(1))
+					span.mask::after
+						transition(transform 200ms $kinetic)
+						transition-delay(100ms)
+						//transform(scaleY(1))
+				&.selected:not([default])::after
+					//transform(scaleY(1))
+					height 1.15em
+				
 		ul.selector.is-selecting
-			cursor url('../../images/close-w.png') 8 8, default
+			cursor url('../../images/close-b.png') 8 8, default
 			li
-				cursor url('../../images/close-w.png') 8 8, default
+				cursor url('../../images/close-b.png') 8 8, default
 		ul.selector:not(.is-selecting):hover
 			li[default]
 				display none

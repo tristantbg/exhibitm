@@ -11,6 +11,24 @@ fields:
   title:
     label: Title
     type:  text
+    width: 3/4
+  pagetheme:
+    label: Theme
+    type: select
+    options:
+      light: Light
+      dark: Dark
+    default: light
+    required: true
+    width: 1/4
+  featured:
+    label: Featured image
+    type: image
+    width: 1/2
+  date:
+    label: Date
+    type: date
+    width: 1/2
   credits:
     label: Credits
     type:  textarea
@@ -55,3 +73,15 @@ fields:
       fetch: children
       value: '{{title}}'
       text: '{{title}}'
+  tab4:
+    label: Collaborators
+    type:  tabs
+  collaborators:
+    type: checkboxes
+    options: query
+    query:
+      page: projects
+      fetch: children
+      value: '{{uid}}'
+      text: '{{title}}'
+      sort: title

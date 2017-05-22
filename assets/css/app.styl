@@ -9,8 +9,8 @@ $md = 1023px
 $sm = 767px
 
 // Colors
-$primary ?= #000
-$secondary ?= #fff
+$primary ?= #fff
+$secondary ?= #000
 $accent ?= #ff0000
 
 // Metrics
@@ -87,6 +87,22 @@ h1, h2, .selector
 .small, #selectorHelp
 	font-size 1.4rem
 
+[event-target]
+	cursor pointer
+
+[event-target="feed"]
+	position relative
+	&::after
+		transition(transform 300ms ease)
+		content url(../../images/itw-arrow-b.svg)
+		transform-origin center
+		position absolute
+		bottom -.9em
+		width .8em
+		align(horizontal)
+	&:hover::after
+		transform(translate(-50%, 20%))	
+
 ::selection
 	background $secondary
 	
@@ -109,15 +125,15 @@ a, a:hover, a:visited, a:focus
 .lazyimg.lazyloaded
 	opacity 1
 
-.embed.embed__thumb>img
+.embed__thumb>img
 	transition(all 300ms ease)
 	opacity 1
 	max-width 100px
 
-.embed.embed__thumb:hover>img
+.embed__thumb:hover>img
 	filter(drop-shadow(0 0 8px alpha($secondary,0.7)))
 
-.embed.embed--video
+.embed--video
 	background $primary
 
 .row
@@ -162,7 +178,12 @@ for n in 1..10
 		display inline-block
 		width auto
 		height 100vh
-		padding 11.5rem 0 3rem
+		//padding 11.5rem 0 3rem
+		padding 15rem 0 5rem
+	&.medium img
+		padding 18vh 0 15vh
+	&.small img
+		padding 28vh 0 25vh
 
 @import 'loader.styl'
 @import 'selector.styl'
@@ -186,9 +207,10 @@ header
 		width 100%
 		height 12rem
 		z-index 0
-		background linear-gradient(180deg,rgba(0,0,0,.8) 15%,rgba(0,0,0,0) 100%)
+		background linear-gradient(180deg, alpha($primary, 0.8) 15%, alpha($primary, 0) 100%)
 
 #container
+	transition(opacity 800ms ease)
 	span(1)
 	padding 0 12.5%
 
@@ -229,7 +251,7 @@ header
 			margin-bottom 1em
 			cursor pointer
 			&::before
-				content url(../../images/itw-arrow.svg)
+				content url(../../images/itw-arrow-b.svg)
 				transform-origin center
 				position absolute
 				top .2em
@@ -255,7 +277,7 @@ header
 		min-height 35vw
 		img
 			transition(opacity 2000ms ease)
-			opacity 0.7
+			//opacity 0.7
 		a
 			display block
 		.overlay
@@ -274,11 +296,41 @@ header
 				width 90%
 				margin-left auto
 				margin-right auto
-	.project-item:hover
+		.overlay.dark
+			color $primary
+	.project-item:not(.no-featured):hover
 		img
 			opacity 1
 		.overlay
 			opacity 0
+
+body.opacify
+	#container
+		opacity 0.7
+
+html.dark
+	background $secondary
+	body
+		background $secondary
+		color $primary
+	header
+		&::before
+			background linear-gradient(180deg, alpha($secondary, 0.8) 15%, alpha($secondary, 0) 100%)
+	#mainSelector, #smallSelector
+		.groupSelector
+			ul.selector
+				li
+					&::after
+						background $primary
+		ul.selector.is-selecting
+			cursor url('../../images/close-w.png') 8 8, default
+			li
+				cursor url('../../images/close-w.png') 8 8, default
+	#page-content
+		section.interview-section
+			.question
+				&::before
+					content url(../../images/itw-arrow-w.svg)
 
 body.loaded
 	overflow initial

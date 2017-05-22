@@ -26,9 +26,14 @@ $(function() {
                 //     }
                 // });
                 $body.on('click', '.interview-section .question', function(event) {
-                  event.preventDefault();
-                  $(this).parent().toggleClass('open');
-                  $(this).next('.answer').slideToggle(300);
+                    event.preventDefault();
+                    $(this).parent().toggleClass('open');
+                    $(this).next('.answer').slideToggle(300);
+                });
+                $('.page ul.selector').hover(function() {
+                  $body.addClass('opacify');
+                }, function() {
+                  $body.removeClass('opacify');
                 });
                 $(document).keyup(function(e) {
                     //esc
@@ -111,11 +116,11 @@ $(function() {
                 event.preventDefault();
                 if (filters.theme == '' && filters.media == '' && filters.author == '') {
                     return;
+                } else if (isInArray(['', 'every'], filters.theme) && isInArray(['', 'every'], filters.media) && filters.author != '') {
+                    window.location.href = $root + "/projects/" + filters.author;
                 } else if ($json.length < 2) {
                     window.location.href = $json[0].url;
-                } else if (isInArray(['','every'], filters.theme) && isInArray(['','every'], filters.media) && filters.author != '') {
-                    window.location.href = $root + "/projects/" + filters.author;
-                } 
+                }
                 // else if (filters.theme != '' && filters.media != '' && filters.author != '') {
                 //     $.ajax({
                 //         url: $root + "/api/random" + filterValue,
@@ -173,9 +178,10 @@ $(function() {
                     $theme.children(':not([keep])').remove();
                     $(data).each(function() {
                         if (!isInArray(uniq, this.theme.slug)) {
+                            $html = '<span>'+this.theme.title+'<span class="mask">'+this.theme.title+'</span></span>';
                             $theme.append($('<li>', {
                                 "data-value": this.theme.slug,
-                                html: this.theme.title,
+                                html: $html,
                             }));
                             uniq.push(this.theme.slug);
                         }
@@ -241,7 +247,9 @@ $(function() {
                 continuousHorizontal: false,
                 scrollOverflow: true,
                 scrollOverflowReset: false,
-                scrollOverflowOptions: null,
+                scrollOverflowOptions: {
+    scrollbars: false
+},
                 touchSensitivity: 5,
                 normalScrollElementTouchThreshold: 5,
                 bigSectionsDestination: null,

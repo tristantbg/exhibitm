@@ -8,7 +8,7 @@ return function ($site, $pages, $page) {
 
 	return array(
 	'projectsPage'	=> page('projects'),
-	'projects' => $projects->sortBy('title', 'desc'),
+	'projects' => $projects->sortBy('date', 'desc'),
 	'loaderTitle'	=> $loaderTitle,
 	'themeBackColor'	=> $themeBackColor,
 	'themeTextColor'	=> $themeTextColor

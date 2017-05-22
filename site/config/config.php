@@ -32,6 +32,7 @@ c::set('iwant', ['I want', 'Give me', 'I yearn for', 'Show me', 'Let me see', 'I
 c::set('now', ['Now', 'Right now', 'Please', 'Right away', 'Immediately', 'At once', 'Promptly']);
 
 c::set('debug', true);
+c::set('cache.driver', 'apc');
 c::set('plugin.embed.video.lazyload', true);
 c::set('plugin.embed.video.lazyload.btn', 'assets/images/play.png');
 c::set('kirbytext.image.figure', false);
@@ -70,3 +71,13 @@ c::set('routes', array(
 		}
 		)
 	));
+
+kirby()->hook(['panel.file.upload', 'panel.file.replace'], function($image) {
+  if ($image->type() == 'image') {
+	   
+		// Set luminance & update image metadata
+		$image->update(array(
+			'luminance'    => $image->getluminance()
+		));
+  }
+});

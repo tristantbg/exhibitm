@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js<?php e($page->pagetheme() == 'dark', ' dark') ?>">
 <head>
 
 	<meta charset="UTF-8" />
@@ -52,7 +52,7 @@
 	<link rel="icon" href="<?php //url('assets/images/favicon.ico') ?>" type="image/x-icon"> -->
 
 	<?php 
-	echo css('assets/css/build/build.min.css');
+	echo css('assets/css/build/build.min.css?=v2');
 	echo js('assets/js/vendor/modernizr.min.js');
 	?>
 	

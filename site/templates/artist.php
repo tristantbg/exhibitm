@@ -21,7 +21,14 @@ $author = $page->title()
 	<div id="related-projects" class="row">
 		<?php foreach ($projects as $key => $project): ?>
 		<?php $image = $project->featured()->toFile(); ?>
-			<div class="project-item">
+		<?php 
+		$themePage = page('themes/'.tagslug($project->theme()));
+		if ($themePage && $themePage->color()->isNotEmpty()) {
+			$themeBackColor = $themePage->color();
+			$themeTextColor = $themePage->textcolor();
+		}
+		?>
+			<div class="project-item<?php e(!$image, ' no-featured') ?>"<?php e(!$image && $themeBackColor, ' style="background-color: '.$themeBackColor.'; color: '.$themeTextColor.'"') ?>>
 				<a href="<?= $project->url() ?>">
 					<?php if($image): ?>
 					<?php 
@@ -40,7 +47,7 @@ $author = $page->title()
 					class="lazyimg lazyload" 
 					width="100%" height="auto">
 					<?php endif ?>
-					<div class="overlay">
+					<div class="overlay<?php e($image && $image->luminance()->int() < 100, ' dark') ?>">
 						<div class="inner">
 							<h2><?= $project->theme()->html() ?></h2>
 							<h2><?= medianame($project->intendedTemplate()) ?></h2>

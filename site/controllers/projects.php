@@ -25,7 +25,7 @@ return function ($site, $pages, $page) {
 
 	return array(
 	'projectsPage'	=> $projectsPage,
-	'projects' => $projects->sortBy('title', 'desc'),
+	'projects' => $projects->sortBy('date', 'desc'),
 	'theme'	=> $theme,
 	'media'	=> $media,
 	'author'	=> $author,
