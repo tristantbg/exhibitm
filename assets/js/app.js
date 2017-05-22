@@ -178,10 +178,9 @@ $(function() {
                     $theme.children(':not([keep])').remove();
                     $(data).each(function() {
                         if (!isInArray(uniq, this.theme.slug)) {
-                            $html = '<span>'+this.theme.title+'<span class="mask">'+this.theme.title+'</span></span>';
                             $theme.append($('<li>', {
                                 "data-value": this.theme.slug,
-                                html: $html,
+                                html: this.theme.title,
                             }));
                             uniq.push(this.theme.slug);
                         }
