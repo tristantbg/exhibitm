@@ -8,19 +8,19 @@
 
 	<div id="themeSelector" class="groupSelector">
 	<ul class="selector" id="theme" name="theme">
-	<li class="selected" data-value="" keep default>Theme</li>
+	<li class="selected" data-value="" keep default><span>Theme</span></li>
 	</ul>
 	</div>
 
 	<div id="mediaSelector" class="groupSelector">
 	<ul class="selector" id="media" name="media">
-	<li class="selected" data-value="" keep default>Media</li>
-	<li data-value="every" keep>Every</li>
+	<li class="selected" data-value="" keep default><span>Media</span></li>
+	<li data-value="every" keep><span>Every</span></li>
 	</ul>
 	</div>
 
 	<div id="authorSelector" class="groupSelector">
-	<ul class="selector" id="author" name="author"><li class="selected" data-value="" keep default>People</li></ul>
+	<ul class="selector" id="author" name="author"><li class="selected" data-value="" keep default><span>People</span></li></ul>
 	</div>
 
 	<div id="selectorSubmit">

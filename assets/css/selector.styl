@@ -13,11 +13,36 @@
 		top 20%
 	#selectorSubmit
 		bottom 20%
+		h1
+			display inline-block
+			position relative
+			&::after
+				content ''
+				position absolute
+				width calc(100% + .2em)
+				height 1px
+				background $secondary
+				bottom .15em
+				left -.1em
+				z-index -1
+				transform-origin bottom
+			&:hover
+				color $primary
+				&::after
+					height 100%
 	#selectorHelp
 		bottom $padding
 	.groupSelector
 		span(1/3)
-		height 100vh
+		height 36vh
+		align(vertical)
+		overflow hidden
+		//overflow-y scroll
+		padding-top 18vh
+		&:nth-child(2)
+			left 33.33%
+		&:nth-child(3)
+			left 66.66%
 		ul
 			position relative
 			z-index 100
@@ -34,38 +59,40 @@
 #mainSelector, #smallSelector
 	.groupSelector
 		text-align center
-		flexbox()
-		justify-content center
-		align-items center
-		flex-direction column
+		// flexbox()
+		// justify-content center
+		// align-items center
+		// flex-direction column
 		ul.selector
 			position relative
 			z-index 100
 			li
 				//transition(color 200ms ease)
 				cursor pointer
-				position relative
-				&::after
-					content ''
-					position absolute
-					width calc(100% + .2em)
-					height 100%
-					background $secondary
-					top -.15em
-					left -.1em
-					z-index -1
-					transform-origin bottom
-					transform(scaleY(0))
+				span
+					position relative
+					display inline-block
+					&::after
+						content ''
+						position absolute
+						width calc(100% + .2em)
+						height 0
+						background $secondary
+						bottom .15em
+						left -.1em
+						z-index -1
 				&:not(.selected)
 					display none
-				&.selected::after
-					transform(scaleY(0.05))
+				&.selected span::after
+					height 1px
 				&:hover:not(.selected)
-					color $primary
-					&::after
+					span
+						color $primary
+						//background-color $secondary
+					span::after
 						// transition(transform 200ms $kinetic)
 						// transition-delay(100ms)
-						transform(scaleY(1))
+						height 100%
 				&.selected:not([default])::after
 					//transform(scaleY(1))
 				

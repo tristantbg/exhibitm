@@ -320,8 +320,11 @@ html.dark
 		.groupSelector
 			ul.selector
 				li
-					&::after
+					span::after
 						background $primary
+					&:hover:not(.selected)
+						span
+							color $secondary
 		ul.selector.is-selecting
 			cursor url('../../images/close-w.png') 8 8, default
 			li

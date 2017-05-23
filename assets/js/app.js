@@ -2,6 +2,9 @@
 var width = $(window).width(),
     height = $(window).height(),
     $json = {},
+    themeScroll,
+    mediaScroll,
+    authorScroll,
     firstSelectInit = true,
     filters = {},
     filterValue = "",
@@ -31,9 +34,22 @@ $(function() {
                     $(this).next('.answer').slideToggle(300);
                 });
                 $('.page ul.selector').hover(function() {
-                  $body.addClass('opacify');
+                    $body.addClass('opacify');
                 }, function() {
-                  $body.removeClass('opacify');
+                    $body.removeClass('opacify');
+                });
+                $('#mainSelector .selector').hover(function() {
+                  setTimeout(function() {
+                        themeScroll.refresh();
+                        authorScroll.refresh();
+                        mediaScroll.refresh();
+                    }, 100);
+                }, function() {
+                  setTimeout(function() {
+                        themeScroll.refresh();
+                        authorScroll.refresh();
+                        mediaScroll.refresh();
+                    }, 100);
                 });
                 $(document).keyup(function(e) {
                     //esc
@@ -134,14 +150,24 @@ $(function() {
                     window.location.href = $root + "/projects" + filterValue;
                 }
             });
+            var iScrollOptions = {
+                mouseWheel: true,
+                scrollbars: true,
+                //useTransform: false
+            };
+            themeScroll = new IScroll('#themeSelector', iScrollOptions);
+            mediaScroll = new IScroll('#mediaSelector', iScrollOptions);
+            authorScroll = new IScroll('#authorSelector', iScrollOptions);
         },
         select: function(el) {
+            $body.removeClass('opacify');
             $parent = el.parent().addClass('is-selecting');
             $parent.find('li').removeClass('selected');
             el.addClass('selected');
             $parent.parent().trigger('change');
         },
         unselect: function(el) {
+            $body.removeClass('opacify');
             el.find('li').removeClass('selected');
             el.find('[default]').addClass('selected');
             el.removeClass('is-selecting').parent().trigger('change');
@@ -180,7 +206,7 @@ $(function() {
                         if (!isInArray(uniq, this.theme.slug)) {
                             $theme.append($('<li>', {
                                 "data-value": this.theme.slug,
-                                html: this.theme.title,
+                                html: '<span>' + this.theme.title + '</span>',
                             }));
                             uniq.push(this.theme.slug);
                         }
@@ -199,7 +225,7 @@ $(function() {
                         if (!isInArray(uniq, this.media.slug)) {
                             $media.append($('<li>', {
                                 "data-value": this.media.slug,
-                                html: this.media.title,
+                                html: '<span>' + this.media.title + '</span>',
                             }));
                             uniq.push(this.media.slug);
                         }
@@ -218,7 +244,7 @@ $(function() {
                         if (!isInArray(uniq, this.author.slug)) {
                             $author.append($('<li>', {
                                 "data-value": this.author.slug,
-                                html: this.author.title,
+                                html: '<span>' + this.author.title + '</span>',
                             }));
                             uniq.push(this.author.slug);
                         }
@@ -228,6 +254,7 @@ $(function() {
                     } else {
                         $author.children('[data-value="' + $current + '"]').addClass('selected');
                     }
+                    
                 }
             });
             firstSelectInit = false;
@@ -247,8 +274,8 @@ $(function() {
                 scrollOverflow: true,
                 scrollOverflowReset: false,
                 scrollOverflowOptions: {
-    scrollbars: false
-},
+                    scrollbars: false
+                },
                 touchSensitivity: 5,
                 normalScrollElementTouchThreshold: 5,
                 bigSectionsDestination: null,
