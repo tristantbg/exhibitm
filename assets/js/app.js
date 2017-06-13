@@ -385,7 +385,7 @@ $(function() {
                     if (!isMobile && !firstSelectInit && filters.theme != '' && filters.media != '' && filters.author != '') {
                         $body.addClass('leaving');
                         setTimeout(function() {
-                            $('#selectorSubmit').trigger('click');
+                            $('#selectorSubmit h2').trigger('click');
                         }, 500);
                         return;
                     }
