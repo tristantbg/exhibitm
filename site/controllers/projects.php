@@ -8,7 +8,8 @@ return function ($site, $pages, $page) {
 	$media = false;
 	$author = false;
 	$loaderTitle = $site->title()->html();
-	if($author = param('author')) {
+	$author = param('author');
+	if($author && $author != 'everyone') {
         if ($page = page('projects/'.$author)) {
             $projects = $page->children()->visible();
         }
@@ -25,7 +26,7 @@ return function ($site, $pages, $page) {
 
 	return array(
 	'projectsPage'	=> $projectsPage,
-	'projects' => $projects->sortBy('date', 'desc'),
+	'projects' => $projects->sortBy('date', 'desc')->paginate(9),
 	'theme'	=> $theme,
 	'media'	=> $media,
 	'author'	=> $author,

@@ -990,6 +990,7 @@
     text-align: center;
     display: block;
     white-space: nowrap
+    display none
 }
 
 .juicer-feed h1.referral a {
@@ -1129,12 +1130,13 @@
 
 .juicer-feed.white li.feed-item, .juicer-feed.user li.feed-item, .juicer-feed.juicer-widget li.feed-item, .juicer-feed.colors li.feed-item, .juicer-feed.gray li.feed-item, .juicer-feed.modern li.feed-item, .juicer-feed.polaroid li.feed-item {
     padding: 10px;
-    background: white;
-    color: #3A3A3A;
+    background: $primary;
+    color: $secondary;
     margin-bottom: 5%;
-    border-color: #e5e5e5;
-    border-style: solid;
-    border-width: 0 1px 1px 0;
+    // border-color: #e5e5e5;
+    // border-style: solid;
+    // border-width: 0 1px 1px 0;
+    border-width: 0;
     white-space: normal;
     float: none;
     overflow-wrap: break-word;
@@ -1146,9 +1148,15 @@
     hyphens: auto
 }
 
+.dark .juicer-feed.white li.feed-item, .juicer-feed.user li.feed-item, .juicer-feed.juicer-widget li.feed-item, .juicer-feed.colors li.feed-item, .juicer-feed.gray li.feed-item, .juicer-feed.modern li.feed-item, .juicer-feed.polaroid li.feed-item {
+    background: $secondary;
+    color: $primary;
+}
+
 .juicer-feed.white li.feed-item.juicer, .juicer-feed.user li.feed-item.juicer, .juicer-feed.juicer-widget li.feed-item.juicer, .juicer-feed.colors li.feed-item.juicer, .juicer-feed.gray li.feed-item.juicer, .juicer-feed.modern li.feed-item.juicer, .juicer-feed.polaroid li.feed-item.juicer {
     background: #F17E6F;
-    color: white
+    color: white;
+    display none
 }
 
 .juicer-feed.white li.feed-item.juicer a, .juicer-feed.user li.feed-item.juicer a, .juicer-feed.juicer-widget li.feed-item.juicer a, .juicer-feed.colors li.feed-item.juicer a, .juicer-feed.gray li.feed-item.juicer a, .juicer-feed.modern li.feed-item.juicer a, .juicer-feed.polaroid li.feed-item.juicer a {
@@ -1428,31 +1436,31 @@
     visibility: visible;
     opacity: 1;
     position: relative;
-    color: white;
+    //color: white;
     padding: 75px 5% 85px;
     background: transparent
 }
 
 .juicer-feed.image-grid li.feed-item.words .j-text a, .juicer-feed.slider li.feed-item.words .j-text a, .juicer-feed.hip li.feed-item.words .j-text a {
-    color: white;
+    //color: white;
     font-weight: bold
 }
 
 .juicer-feed.image-grid li.feed-item.words .j-text a:hover, .juicer-feed.slider li.feed-item.words .j-text a:hover, .juicer-feed.hip li.feed-item.words .j-text a:hover {
-    color: #F17E6F
+    //color: #F17E6F
 }
 
 .juicer-feed.image-grid li.feed-item.words .j-text p, .juicer-feed.slider li.feed-item.words .j-text p, .juicer-feed.hip li.feed-item.words .j-text p {
-    color: white
+    //color: white
 }
 
 .juicer-feed.image-grid li.feed-item.words .j-meta a, .juicer-feed.slider li.feed-item.words .j-meta a, .juicer-feed.hip li.feed-item.words .j-meta a {
-    color: white;
+    //color: white;
     font-weight: normal
 }
 
 .juicer-feed.image-grid li.feed-item.words .j-poster h3, .juicer-feed.image-grid li.feed-item.words .j-poster .j-date, .juicer-feed.slider li.feed-item.words .j-poster h3, .juicer-feed.slider li.feed-item.words .j-poster .j-date, .juicer-feed.hip li.feed-item.words .j-poster h3, .juicer-feed.hip li.feed-item.words .j-poster .j-date {
-    color: white
+    //color: white
 }
 
 .juicer-feed.image-grid li.feed-item.j-video .j-text .j-message, .juicer-feed.slider li.feed-item.j-video .j-text .j-message, .juicer-feed.hip li.feed-item.j-video .j-text .j-message {
@@ -1527,14 +1535,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     height: auto;
     opacity: 0;
     visibility: hidden
 }
 
 .juicer-feed.image-grid .j-poster h3, .juicer-feed.image-grid .j-poster .j-date, .juicer-feed.slider .j-poster h3, .juicer-feed.slider .j-poster .j-date, .juicer-feed.hip .j-poster h3, .juicer-feed.hip .j-poster .j-date {
-    color: #bababa
+    //color: #bababa
 }
 
 .juicer-feed.slider {
@@ -1778,12 +1786,12 @@
 }
 
 .juicer-feed.classic li.feed-item .j-message a {
-    color: #F17E6F
+    //color: #F17E6F
 }
 
 .juicer-feed.classic li.feed-item .info {
     font-size: 0.85rem;
-    color: #878787
+    //color: #878787
 }
 
 .juicer-feed.classic li.feed-item .info a {
@@ -1792,7 +1800,7 @@
 }
 
 .juicer-feed.classic li.feed-item .info a:hover {
-    color: #F17E6F
+    //color: #F17E6F
 }
 
 .juicer-feed.living-wall {
@@ -1944,7 +1952,7 @@
 }
 
 .juicer-feed.modern .j-poster {
-    padding: 14px 10px 12px;
+    padding: 14px 0 12px;
     height: auto;
     margin: 0;
     height: 56px
@@ -1981,11 +1989,11 @@
 
 .juicer-feed.modern .j-text {
     font-size: 14px;
-    padding: 20px 15px 20px 20px
+    padding: 20px 0
 }
 
 .juicer-feed.modern .j-message {
-    color: #666;
+    //color: #666;
     line-height: 25px
 }
 
@@ -2441,8 +2449,20 @@
     font-weight: bold
 }
 
-.juicer-feed video::-internal-media-controls-download-button {
-    display: none
+.juicer-feed {
+    video::-webkit-media-controls-play-button {}
+
+    video::-webkit-media-controls-volume-slider {}
+
+    video::-webkit-media-controls-mute-button {}
+
+    video::-webkit-media-controls-timeline {}
+
+    video::-webkit-media-controls-current-time-display {}
+    
+    video::-internal-media-controls-download-button {}
+    
+    video::-webkit-media-controls {display: none;}
 }
 
 .juicer-feed video::-webkit-media-controls-enclosure {
@@ -2468,11 +2488,11 @@
 }
 
 .j-poster a {
-    color: #3A3A3A
+    color: inherit
 }
 
 .j-poster a:hover {
-    color: #F17E6F
+    color: inherit
 }
 
 .j-poster h3 {
@@ -2486,7 +2506,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     clear: none;
-    color: #3A3A3A;
+    //color: #3A3A3A;
     line-height: 20px
 }
 
@@ -2494,7 +2514,7 @@
     float: right;
     font-size: 14px;
     margin-top: 4px;
-    color: #a0a0a0
+    //color: #a0a0a0
 }
 
 .j-edit span {

@@ -21,6 +21,10 @@ $kinetic = cubic-bezier(0.77, 0, 0.175, 1)
 // CSS Reset
 global-reset()
 
+//Juicer
+@import 'juicer.styl'
+
+webfont('DINBold', 'DINBold', false, 'normal')
 webfont('DINCondensedBold', 'DINCondensedBold', false, 'normal')
 webfont('PalatinoLTStdRoman', 'PalatinoLTStdRoman', false, 'normal')
 webfont('PalatinoLTStdItalic', 'PalatinoLTStdItalic', false, 'italic')
@@ -33,6 +37,10 @@ body,html
 
 html
 	font-size 62.5%
+	+below($md)
+		font-size 43%
+	+below($sm)
+		font-size 33%
 
 body
 	font-family 'PalatinoLTStdRoman', Helvetica Neue, Arial, sans-serif
@@ -45,6 +53,8 @@ body
 p
 	margin-bottom 1em
 	line-height 130%
+	+below($md)
+		font-size 2.7rem
 
 p:last-child
 	margin-bottom 0
@@ -72,20 +82,41 @@ h1, h2, .selector, .lead, .exergue
 	text-transform uppercase
 	font-family 'DINCondensedBold'
 
-h1.title
+.primary-credits, .image-credits
+	a, strong
+		text-transform uppercase
+		font-family 'DINBold'
+
+h1.title, h2.title
 	font-size 9rem
 
 h1, h2, .selector
 	font-size 3.1rem
+	+below($md)
+		font-size 5rem
 
-#mainSelector ul li, .exergue
+#page-infos h2, .project-item h2
+	font-size 3.1rem
+
+.exergue
 	font-size 4.5rem
+
+#mainSelector ul li
+	font-size 4.5rem
+	+below($md)
+		font-size 6rem
+
+.logo-title
+	margin-top 1em
+	+below($md)
+		display none
 
 .lead
 	font-size 2.5rem
 
-.small, #selectorHelp
-	font-size 1.4rem
+.small, #selectorHelp, .people-item p, .primary-credits, .image-credits
+	+above($md + 1)
+		font-size 1.4rem
 
 [event-target]
 	cursor pointer
@@ -101,7 +132,8 @@ h1, h2, .selector
 		width .8em
 		align(horizontal)
 	&:hover::after
-		transform(translate(-50%, 20%))	
+		+above($md + 1)
+			transform(translate(-50%, 20%))	
 
 ::selection
 	background $secondary
@@ -140,7 +172,7 @@ a, a:hover, a:visited, a:focus
 	span(1)
 
 .cf
-	clearfix()
+	clear both !important
 
 for n in 1..12
 	.grid-item.col-{n}
@@ -162,6 +194,9 @@ for n in 1..10
 		padding-top (n * 1rem)
 	.pb-{n}
 		padding-bottom (n * 1rem)
+	[md~=pb-{n}]
+		+below($md)
+			padding-bottom (n * 1rem)
 
 .left
 	text-align left !important
@@ -172,18 +207,37 @@ for n in 1..10
 .right
 	text-align right !important
 
+[md~=center]
+	+below($md)
+		text-align center !important
+
 .fit-h
 	text-align center !important
+	+below($md)
+		margin-bottom $spaceBetween
 	img
-		display inline-block
-		width auto
-		height 100vh
-		//padding 11.5rem 0 3rem
-		padding 15rem 0 5rem
+		width 100%
+		height auto
+		+above($md + 1)
+			display inline-block
+			width auto
+			height 100vh
+			//padding 11.5rem 0 3rem
+			padding 15rem 0 5rem
 	&.medium img
-		padding 18vh 0 15vh
+		+above($md + 1)
+			padding 18vh 0 15vh
 	&.small img
-		padding 28vh 0 25vh
+		+above($md + 1)
+			padding 28vh 0 25vh
+
+img.small
+	+above($md + 1)
+		padding 0 25%
+		
+img.medium
+	+above($md + 1)
+		padding 0 15%
 
 @import 'loader.styl'
 @import 'selector.styl'
@@ -198,7 +252,10 @@ header
 	z-index 1000
 	#site-title
 		position relative
-		z-index 10
+		z-index 1000
+		h1
+			+below($md)
+				font-size 5rem
 	&::before
 		content ''
 		position absolute
@@ -209,10 +266,105 @@ header
 		z-index 0
 		background linear-gradient(180deg, alpha($primary, 0.8) 15%, alpha($primary, 0) 100%)
 
-#container
-	transition(opacity 800ms ease)
+#container, .contained
 	span(1)
 	padding 0 12.5%
+	+below($md)
+		padding 0 2rem
+	+above($xl)
+		padding 0 30%
+
+#container
+	transition(opacity 600ms ease)
+
+#feed
+	padding 20rem 0
+
+.edito-infos
+	.primary-credits, .image-credits
+		span(1/4)
+		padding-right 2rem
+		display inline-block
+		text-align left
+		margin-bottom 5rem
+		+below($md)
+			stack()
+		em
+			font-family 'PalatinoLTStdRoman'
+			font-style normal
+			text-decoration underline
+		&.last
+			//margin-right 0
+	.text-credits
+		span(1)
+		text-align left
+		margin-bottom 1em
+		+above($md + 1)
+			span(1/2)
+			padding-right 2rem
+		&.lead
+			margin-bottom 2rem
+		&.last
+			//margin-right 0
+			margin-bottom 0
+	.off-4_5
+		+above($md + 1)
+			margin-left 37.5%
+	.off-3
+		+above($md + 1)
+			margin-left 25%
+	.off-1_5
+		+above($md + 1)
+			margin-left 12.5%
+	.off-6
+		+above($md + 1)
+			margin-left 50%
+	.row
+		span(1)
+
+.image-credits
+	display none
+
+.edito.image-content
+	img
+		cursor pointer
+
+#infos-overlay
+	transition opacity 300ms ease, visibility 300ms ease
+	opacity 0
+	visibility hidden
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	padding-top 17rem
+	background-color alpha($primary,0.5)
+	display inline-top .1emtop .1em
+	justify-content center
+	flex-wrap wrap
+	//pointer-events none
+	cursor url('../../images/close-b.png') 8 8, default
+	&.visible
+		opacity 1
+		visibility visible
+	.primary-credits
+		span(1/4)
+		padding-right 2rem
+		margin-bottom 5rem
+		+below($md)
+			span(1/2)
+	.image-credits
+		span(1/4)
+		padding-right 2rem
+		margin-bottom 5rem
+		display block
+		+below($md)
+			span(1/2)
+		em
+			font-family 'PalatinoLTStdRoman'
+			font-style normal
+			text-decoration underline
 
 #page-content
 	span(1)
@@ -220,8 +372,14 @@ header
 		margin-top 20rem
 	#essay-content
 		margin-bottom $spaceBetween
+		h1,h2,h3,h4
+			text-align center
+			margin-bottom 1em
+		.embed:not(:last-child)
+			margin-bottom $spaceBetween
 		p
-			padding 0 10%
+			+above($md + 1)
+				padding 0 10%
 		.embed.embed--video
 			width 80%
 			margin-left auto
@@ -237,11 +395,17 @@ header
 		margin-top 0
 		.exergue, .exergue.align-right
 			span(1/2, offset: 1/2)
+			+below($md)
+				span(2/3, offset: 1/3)
 		.exergue.align-center
 			span(1/2, offset: 1/4)
 			text-align center
+			+below($md)
+				span(2/3, offset: 1/6)
 		.exergue.align-left
 			span(1/2)
+			+below($md)
+				span(2/3)
 	section.interview-section
 		margin-top 0
 		.question
@@ -250,6 +414,8 @@ header
 			padding-left 1.2em
 			margin-bottom 1em
 			cursor pointer
+			+below($md)
+				width 100%
 			&::before
 				content url(../../images/itw-arrow-b.svg)
 				transform-origin center
@@ -260,7 +426,8 @@ header
 		.answer
 			display none
 			margin-bottom 1em
-			margin-left 3em
+			+above($md + 1)
+				margin-left 3em
 		&.open
 			.question::before
 				transform(rotate(180deg) translateY(30%))
@@ -269,12 +436,19 @@ header
 	margin-bottom $spaceBetween
 	text-align center
 	.project-item
-		col(1/3, cycle: 3)
 		display inline-block
 		position relative
 		cursor pointer
 		margin-bottom 3%
-		min-height 35vw
+		overflow-y hidden
+		+above($md + 1)
+			col(1/3, cycle: 3)
+			height 34.7vw
+		+below($md)
+			col(1/2, cycle: 2)
+			height 67vw
+		a, img
+			display block
 		img
 			transition(opacity 2000ms ease)
 			//opacity 0.7
@@ -296,44 +470,83 @@ header
 				width 90%
 				margin-left auto
 				margin-right auto
+				//vendor(filter, drop-shadow(0 0 10px $primary))
 		.overlay.dark
 			color $primary
+			.inner
+				vendor(filter, drop-shadow(0 0 10px $secondary))
 	.project-item:not(.no-featured):hover
 		img
-			opacity 1
+			+above($md + 1)
+				opacity 1
 		.overlay
-			opacity 0
+			+above($md + 1)
+				opacity 0
+
+nav#pagination
+	span(1)
+	.next, .prev
+		display block
+		float left
+	.prev
+		float right
+
+#everyone
+	.people-item
+		col(1/3, cycle:3)
+		margin-bottom 1em
+		p
+			margin-top -.2em
+			padding-left 3rem
 
 body.opacify
 	#container
-		opacity 0.7
+		opacity 0.6
 
 html.dark
 	background $secondary
 	body
 		background $secondary
 		color $primary
+	.loader
+		background $secondary
+		color $primary
 	header
 		&::before
 			background linear-gradient(180deg, alpha($secondary, 0.8) 15%, alpha($secondary, 0) 100%)
+	[event-target="feed"]::after
+		content url(../../images/itw-arrow-w.svg)
+	#mobile-selector h2::after
+		background $primary
 	#mainSelector, #smallSelector
 		.groupSelector
 			ul.selector
 				li
 					span::after
 						background $primary
-					&:hover:not(.selected)
+					&:hover:not(.is-selected), &.highlight
 						span
 							color $secondary
 		ul.selector.is-selecting
 			cursor url('../../images/close-w.png') 8 8, default
 			li
 				cursor url('../../images/close-w.png') 8 8, default
+		#selectorSubmit
+			h2::after
+				background $primary
+			h2:hover
+				+above($md + 1)
+					color $secondary
+			h2.is-selected
+				color $secondary
 	#page-content
 		section.interview-section
 			.question
 				&::before
 					content url(../../images/itw-arrow-w.svg)
+	#infos-overlay
+		background-color alpha($secondary,0.5)
+		cursor url('../../images/close-w.png') 8 8, default
 
 body.loaded
 	overflow initial

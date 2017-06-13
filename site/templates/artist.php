@@ -10,6 +10,9 @@ $author = $page->title()
 		<div class="row center">
 			<h1 class="title"><?= $author->html() ?></h1>
 			<h2><?= $page->job()->html() ?></h2>
+			<?php if($page->logo()->isNotEmpty()): ?>
+				<img class="logo-title" src="<?= $page->logo()->toFile()->url() ?>" alt="<?= $author->html() ?>" width="<?= $page->logosize()."%" ?>">
+			<?php endif ?>
 		</div>
 		<div class="row pt-3 pb-10">
 			<?php if($page->text()->isNotEmpty()): ?>
@@ -58,6 +61,20 @@ $author = $page->title()
 			</div>
 		<?php endforeach ?>
 	</div>
+	<?php if($projects->pagination()->hasPages()): ?>
+	<!-- pagination -->
+	<nav id="pagination">
+
+	  <?php if($projects->pagination()->hasNextPage()): ?>
+	  <a class="next" href="<?php echo $projects->pagination()->nextPageURL() ?>"><h2>&lsaquo; Prev</h2></a>
+	  <?php endif ?>
+
+	  <?php if($projects->pagination()->hasPrevPage()): ?>
+	  <a class="prev" href="<?php echo $projects->pagination()->prevPageURL() ?>"><h2>Next &rsaquo;</h2></a>
+	  <?php endif ?>
+
+	</nav>
+	<?php endif ?>
 </div>
 
 <?php snippet('footer') ?>

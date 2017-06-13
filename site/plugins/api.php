@@ -8,7 +8,8 @@ kirby()->routes([
     'pattern' => "{$prefix}/projects",
     'action' => function() {
 
-    if($author = param('author')) {
+    $author = param('author');
+	if($author && $author != 'everyone') {
         if ($page = page('projects/'.$author)) {
             $projects = $page->children()->visible();
         }

@@ -79,5 +79,7 @@ kirby()->hook(['panel.file.upload', 'panel.file.replace'], function($image) {
 		$image->update(array(
 			'luminance'    => $image->getluminance()
 		));
+
+		
   }
 });

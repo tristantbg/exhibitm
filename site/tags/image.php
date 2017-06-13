@@ -87,7 +87,7 @@ kirbytext::$tags['image'] = array(
         'data-srcset' => $srcset,
         'data-sizes' => 'auto',
         'data-optimumx' => '1.5', 
-        'class'  => 'lazyimg lazyload',
+        'class'  => 'lazyimg lazyload '.$tag->attr('class'),
         'title'  => $title,
         'alt'    => $alt
       ));

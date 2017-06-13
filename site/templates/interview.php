@@ -10,7 +10,7 @@
 		</div>
 		<div class="row pt-3 pb-10">
 			<?php if($page->text()->isNotEmpty()): ?>
-				<div class="grid-item col-6 lead right"><?= $page->credits()->kt() ?></div>
+				<div class="grid-item col-6 lead right" md="center pb-5"><?= $page->credits()->kt() ?></div>
 				<div class="grid-item col-6 small"><?= $page->text()->kt() ?></div>
 			<?php else: ?>
 				<div class="grid-item span-8 off-2 lead center"><?= $page->credits()->kt() ?></div>

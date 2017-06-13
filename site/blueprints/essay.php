@@ -3,6 +3,7 @@
 title: Essay
 pages: false
 files: true
+icon: font
 fields:
   prevnext: prevnext
   tab1:
@@ -69,6 +70,7 @@ fields:
   collaborators:
     type: checkboxes
     options: query
+    columns: 1
     query:
       page: projects
       fetch: children

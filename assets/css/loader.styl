@@ -85,3 +85,33 @@
 				stroke-dasharray 1, 200
 				stroke-dashoffset 0
 				animation dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+
+#intro
+	position fixed
+	width 100%
+	height 100%
+	top 0
+	left 0
+	background-size cover
+	z-index 9000
+	.site-title
+		position absolute
+		top 0
+		left 0
+		width 100%
+		padding $padding 0
+	.inner
+		width 100%
+		position absolute
+		bottom 40%
+		left 0
+	h2.title
+		margin 15rem 0 11rem
+	#intro-links
+		flexbox()
+		+below($md)
+			flex-direction column
+		.link-item
+			width 100%
+			+below($md)
+				margin-bottom 1em

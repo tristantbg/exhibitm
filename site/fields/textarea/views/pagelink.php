@@ -10,6 +10,9 @@
                      marginTop: -(Math.round($(".modal-content").data('height') / 2))
                  }, 150);
                });
+          setTimeout(function() {
+        	$(window).trigger('resize');
+        }, 500);
       });
       $(".link.smalllink").on('click', function() {        
         textarea = $("#" + $(".modal form").data("textarea"));

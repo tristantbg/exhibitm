@@ -3,6 +3,7 @@
 title: Interview
 pages: false
 files: true
+icon: comments
 fields:
   prevnext: prevnext
   tab1:
@@ -58,7 +59,7 @@ fields:
         fields:
           question:
             label: Question
-            type: text
+            type: textarea
           answer:
             label: Answer
             type: textarea
@@ -79,6 +80,7 @@ fields:
   collaborators:
     type: checkboxes
     options: query
+    columns: 1
     query:
       page: projects
       fetch: children

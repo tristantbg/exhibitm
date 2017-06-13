@@ -2,6 +2,7 @@
 
 title: Edito
 pages: false
+icon: camera
 files:
   fields:
     itemsize:
@@ -13,9 +14,14 @@ files:
         large : Large
       columns: 3
       default: large
-    caption:
-      label: Caption
-      type: text
+    imagecredits:
+      label: Image Credits
+      type:  textarea
+      buttons:
+        - bold
+        - page
+        - link
+        - italic
 fields:
   prevnext: prevnext
   tab1:
@@ -42,7 +48,10 @@ fields:
     label: Date
     type: date
     width: 1/2
-  credits:
+  headlineCreditsPrimary:
+    label: Primary Credits
+    type: headline
+  pcredits1:
     label: Credits
     type:  textarea
     buttons:
@@ -51,6 +60,53 @@ fields:
       - link
       - italic
     width: 1/2
+  pcredits1:
+    label: Column 1
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits2:
+    label: Column 2
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits3:
+    label: Column 3
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits4:
+    label: Column 4
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  headlineInfosSecondary:
+    label: Secondary Infos
+    type: headline
+  subtitle:
+    label: Subtitle
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
   text:
     label: Text
     type:  textarea
@@ -59,6 +115,25 @@ fields:
       - link
       - italic
     width: 1/2
+  additionaltext:
+    label: Additional Text
+    type:  textarea
+    buttons:
+      - page
+      - link
+      - italic
+    width: 1/2
+  headlineCreditsTeam:
+    label: Team Credits
+    type: headline
+  team:
+    label: Team
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
   tab2:
     label: Content
     type:  tabs
@@ -82,6 +157,7 @@ fields:
   collaborators:
     type: checkboxes
     options: query
+    columns: 1
     query:
       page: projects
       fetch: children

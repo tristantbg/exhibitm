@@ -29,3 +29,8 @@ fields:
     type: image
     help: 1200x630px minimum
     width: 1/2
+  juicer:
+    label: Juicer Feed ID
+    type:  text
+    icon: code
+    width: 1/2
