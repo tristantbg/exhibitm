@@ -30,7 +30,10 @@ fields:
     label: Date
     type: date
     width: 1/2
-  credits:
+  headlineCreditsPrimary:
+    label: Primary Credits
+    type: headline
+  pcredits1:
     label: Credits
     type:  textarea
     buttons:
@@ -39,8 +42,63 @@ fields:
       - link
       - italic
     width: 1/2
+  pcredits1:
+    label: Column 1
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits2:
+    label: Column 2
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits3:
+    label: Column 3
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  pcredits4:
+    label: Column 4
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
+    width: 1/2
+  headlineInfosSecondary:
+    label: Secondary Infos
+    type: headline
+  subtitle:
+    label: Subtitle
+    type:  textarea
+    buttons:
+      - bold
+      - page
+      - link
+      - italic
   text:
     label: Text
+    type:  textarea
+    buttons:
+      - page
+      - link
+      - italic
+    width: 1/2
+  additionaltext:
+    label: Additional Text
     type:  textarea
     buttons:
       - page

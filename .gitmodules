@@ -19,3 +19,9 @@
 [submodule "site/plugins/field-engineer"]
 	path = site/plugins/field-engineer
 	url = https://github.com/jenstornell/field-engineer
+[submodule "site/fields/color"]
+	path = site/fields/color
+	url = https://github.com/ian-cox/Kirby-Color-Picker
+[submodule "site/fields/fieldtoggle"]
+	path = site/fields/fieldtoggle
+	url = https://github.com/medienbaecker/kirby-fieldtoggle

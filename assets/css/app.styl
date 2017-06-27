@@ -5,7 +5,7 @@
 // Media queries
 $xl = 1600px
 $lg = 1260px
-$md = 1023px
+$md = 900px
 $sm = 767px
 
 // Colors
@@ -15,7 +15,7 @@ $accent ?= #ff0000
 
 // Metrics
 $padding = 3rem
-$spaceBetween = 10rem
+$spaceBetween = 13rem
 $kinetic = cubic-bezier(0.77, 0, 0.175, 1)
 
 // CSS Reset
@@ -30,6 +30,9 @@ webfont('PalatinoLTStdRoman', 'PalatinoLTStdRoman', false, 'normal')
 webfont('PalatinoLTStdItalic', 'PalatinoLTStdItalic', false, 'italic')
 webfont('PalatinoLTStdBold', 'PalatinoLTStdBold', false, 'normal')
 
+::-webkit-scrollbar
+	display none
+
 body,html
 	width 100%
 	-webkit-text-size-adjust 100%
@@ -41,6 +44,10 @@ html
 		font-size 43%
 	+below($sm)
 		font-size 33%
+	&.no-scroll
+		overflow hidden !important
+		body
+			overflow hidden !important
 
 body
 	font-family 'PalatinoLTStdRoman', Helvetica Neue, Arial, sans-serif
@@ -48,7 +55,6 @@ body
 	text-rendering optimizeLegibility
 	font-smoothing()
 	color $secondary
-	overflow hidden
 
 p
 	margin-bottom 1em
@@ -90,16 +96,13 @@ h1, h2, .selector, .lead, .exergue
 h1.title, h2.title
 	font-size 9rem
 
-h1, h2, .selector
+h1, h2, .selector, .exergue-section .exergue
 	font-size 3.1rem
 	+below($md)
 		font-size 5rem
 
 #page-infos h2, .project-item h2
-	font-size 3.1rem
-
-.exergue
-	font-size 4.5rem
+	font-size 2.5rem
 
 #mainSelector ul li
 	font-size 4.5rem
@@ -200,6 +203,8 @@ for n in 1..10
 
 .left
 	text-align left !important
+	p
+		text-align left !important
 
 .center
 	text-align center !important
@@ -264,13 +269,14 @@ header
 		width 100%
 		height 12rem
 		z-index 0
-		background linear-gradient(180deg, alpha($primary, 0.8) 15%, alpha($primary, 0) 100%)
+		+above($md + 1)
+			background linear-gradient(180deg, alpha($primary, 0.8) 15%, alpha($primary, 0) 100%)
 
 #container, .contained
 	span(1)
 	padding 0 12.5%
 	+below($md)
-		padding 0 2rem
+		padding 0 2rem 0 3rem
 	+above($xl)
 		padding 0 30%
 
@@ -283,12 +289,13 @@ header
 .edito-infos
 	.primary-credits, .image-credits
 		span(1/4)
-		padding-right 2rem
+		padding-right 7rem
 		display inline-block
 		text-align left
 		margin-bottom 5rem
 		+below($md)
-			stack()
+			width 50%
+			text-align left
 		em
 			font-family 'PalatinoLTStdRoman'
 			font-style normal
@@ -296,14 +303,13 @@ header
 		&.last
 			//margin-right 0
 	.text-credits
-		span(1)
-		text-align left
-		margin-bottom 1em
-		+above($md + 1)
-			span(1/2)
-			padding-right 2rem
+		&:not(.row)
+			+above($md + 1)
+				padding-right 7rem
 		&.lead
 			margin-bottom 2rem
+			+below($md)
+				margin-bottom 5rem
 		&.last
 			//margin-right 0
 			margin-bottom 0
@@ -330,9 +336,7 @@ header
 		cursor pointer
 
 #infos-overlay
-	transition opacity 300ms ease, visibility 300ms ease
-	opacity 0
-	visibility hidden
+	display none
 	position fixed
 	top 0
 	left 0
@@ -340,14 +344,10 @@ header
 	height 100%
 	padding-top 17rem
 	background-color alpha($primary,0.5)
-	display inline-top .1emtop .1em
 	justify-content center
 	flex-wrap wrap
 	//pointer-events none
 	cursor url('../../images/close-b.png') 8 8, default
-	&.visible
-		opacity 1
-		visibility visible
 	.primary-credits
 		span(1/4)
 		padding-right 2rem
@@ -372,6 +372,8 @@ header
 		margin-top 20rem
 	#essay-content
 		margin-bottom $spaceBetween
+		img
+			display block
 		h1,h2,h3,h4
 			text-align center
 			margin-bottom 1em
@@ -379,7 +381,12 @@ header
 			margin-bottom $spaceBetween
 		p
 			+above($md + 1)
+				line-height 155%
 				padding 0 10%
+			+below($md)
+				line-height 145%
+				font-size 3rem
+				letter-spacing .02em
 		.embed.embed--video
 			width 80%
 			margin-left auto
@@ -408,6 +415,15 @@ header
 				span(2/3)
 	section.interview-section
 		margin-top 0
+		img
+			display block
+		p
+			+above($md + 1)
+				line-height 155%
+			+below($md)
+				line-height 145%
+				font-size 3rem
+				letter-spacing .02em
 		.question
 			width 70%
 			position relative
@@ -513,7 +529,8 @@ html.dark
 		color $primary
 	header
 		&::before
-			background linear-gradient(180deg, alpha($secondary, 0.8) 15%, alpha($secondary, 0) 100%)
+			+above($md + 1)
+				background linear-gradient(180deg, alpha($secondary, 0.8) 15%, alpha($secondary, 0) 100%)
 	[event-target="feed"]::after
 		content url(../../images/itw-arrow-w.svg)
 	#mobile-selector h2::after
