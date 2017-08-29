@@ -1,5 +1,5 @@
 @import 'nib'
-@import '../../node_modules/jeet/stylus/jeet/*'
+@import '../../node_modules/jeet/styl/'
 @import '_mixins.styl'
 
 // Media queries
@@ -136,7 +136,7 @@ h1, h2, .selector, .exergue-section .exergue
 		align(horizontal)
 	&:hover::after
 		+above($md + 1)
-			transform(translate(-50%, 20%))	
+			transform translate(-50%, 20%)
 
 ::selection
 	background $secondary
@@ -179,7 +179,7 @@ a, a:hover, a:visited, a:focus
 
 for n in 1..12
 	.grid-item.col-{n}
-		col(n/12)
+		column(n/12)
 		+below($md)
 			stack()
 	.grid-item.span-{n}
@@ -223,6 +223,8 @@ for n in 1..10
 	img
 		width 100%
 		height auto
+		+below($md)
+			max-width 400px
 		+above($md + 1)
 			display inline-block
 			width auto
@@ -243,6 +245,21 @@ img.small
 img.medium
 	+above($md + 1)
 		padding 0 15%
+
+figure
+	margin 0
+	margin-bottom 1em
+	&.small
+		+above($md + 1)
+			padding 0 35%
+	&.medium
+		+above($md + 1)
+			padding 0 25%
+	img, img.small, img.medium
+		padding 0
+
+figcaption
+	margin-top .6em
 
 @import 'loader.styl'
 @import 'selector.styl'
@@ -282,6 +299,9 @@ header
 
 #container
 	transition(opacity 600ms ease)
+
+#container.edito
+	padding 0
 
 #feed
 	padding 20rem 0
@@ -332,6 +352,8 @@ header
 	display none
 
 .edito.image-content
+	+below($md)
+		padding 0 2rem
 	img
 		cursor pointer
 
@@ -446,7 +468,7 @@ header
 				margin-left 3em
 		&.open
 			.question::before
-				transform(rotate(180deg) translateY(30%))
+				transform rotate(180deg) translateY(30%)
 
 #related-projects
 	margin-bottom $spaceBetween
@@ -458,10 +480,12 @@ header
 		margin-bottom 3%
 		overflow-y hidden
 		+above($md + 1)
-			col(1/3, cycle: 3)
+			column(1/3, $cycle: 3)
 			height 34.7vw
+		+above($xl)
+			height 18vw
 		+below($md)
-			col(1/2, cycle: 2)
+			column(1/2, $cycle: 2)
 			height 67vw
 		a, img
 			display block
@@ -509,7 +533,7 @@ nav#pagination
 
 #everyone
 	.people-item
-		col(1/3, cycle:3)
+		column(1/3, $cycle:3)
 		margin-bottom 1em
 		p
 			margin-top -.2em

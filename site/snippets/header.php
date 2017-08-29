@@ -95,4 +95,4 @@
 </div>
 <?php endif ?>
 
-<div id="container">
+<div id="container"<?php e($page->intendedTemplate() == "edito", ' class="edito"') ?>>

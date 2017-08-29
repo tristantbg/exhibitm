@@ -20,7 +20,7 @@ $primaryCredits = structure($primaryCredits);
 ?>
 
 <div id="page-content">
-	<div id="page-infos" class="row">
+	<div id="page-infos" class="row edito-infos">
 		<?php snippet('project-infos', array('page' => $page, 'primaryCredits' => $primaryCredits)) ?>
 	</div>
 

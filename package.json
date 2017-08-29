@@ -5,17 +5,18 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-stylus": "*",
     "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-stylus": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",
     "grunt-php": "*",
-    "jeet": "*",
+    "jeet": "^7.1.0",
     "rupture": "*"
   },
   "dependencies": {
     "flickity": "^2.0.8",
     "fullpage.js": "^2.9.4",
+    "jquery-ias": "^2.2.2",
     "lazysizes": "^3.0.0"
   }
 }

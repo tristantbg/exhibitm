@@ -28,7 +28,9 @@ fields:
     width: 1/2
   date:
     label: Date
-    type: date
+    type: datetime
+    default: today now
+    required: true
     width: 1/2
   headlineCreditsPrimary:
     label: Primary Credits

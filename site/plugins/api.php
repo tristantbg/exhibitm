@@ -8,6 +8,8 @@ kirby()->routes([
     'pattern' => "{$prefix}/projects",
     'action' => function() {
 
+    if(!r::ajax()) go(url('error'));
+
     $author = param('author');
 	if($author && $author != 'everyone') {
         if ($page = page('projects/'.$author)) {
@@ -46,6 +48,7 @@ kirby()->routes([
     'pattern' => "{$prefix}/themes",
     'action' => function() {
 
+    if(!r::ajax()) go(url('error'));
     
     $themes = page('themes')->children();
       
@@ -64,6 +67,7 @@ kirby()->routes([
     'pattern' => "{$prefix}/random",
     'action' => function() {
 
+   	if(!r::ajax()) go(url('error'));
     
     if($author = param('author')) {
         if ($page = page('projects/'.$author)) {

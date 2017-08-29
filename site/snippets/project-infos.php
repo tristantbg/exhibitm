@@ -48,6 +48,8 @@ $textsCount = count($texts);
 					if($primaryCount == 1) $class .= ' off-4_5';
 					if($primaryCount == 2) $class .= ' off-3';
 					if($primaryCount == 3) $class .= ' off-1_5';
+				} else if($primaryCount == 1 && $textsCount == 1) {
+					$class .= ' last grid-item off-3';
 				}
 			}
 
@@ -56,7 +58,7 @@ $textsCount = count($texts);
 				<?= $pcredit->kt() ?>
 			</div>
 		<?php endforeach ?>
-		<?php if($primaryCount == 2 && $textsCount < 2): ?>
+		<?php if($primaryCount < 2 && $textsCount < 2): ?>
 		<div class="grid-item col-6">
 		<?php endif ?>
 			<?php if ($subtitle->isNotEmpty() && $primaryCount < 3 && $textsCount < 2): ?>
@@ -69,7 +71,7 @@ $textsCount = count($texts);
 					<?= $text->kt() ?>
 				</div>
 			<?php endforeach ?>
-		<?php if($primaryCount == 2 && $textsCount < 2): ?>
+		<?php if($primaryCount < 2 && $textsCount < 2): ?>
 		</div>
 		<?php endif ?>
 	<?php endif ?>

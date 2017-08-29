@@ -21,7 +21,7 @@ $mediasCount = $medias->count();
 ?>
 
 <div id="page-content" class="magnet">
-	<div class="row section-magnet fp-auto-height">
+	<div class="row section-magnet contained fp-auto-height">
 		<div id="page-infos" class="row edito-infos">
 			<?php snippet('project-infos', array('page' => $page, 'primaryCredits' => $primaryCredits)) ?>
 		</div>
@@ -47,7 +47,7 @@ $mediasCount = $medias->count();
 
 			<?php 
 			$srcset = '';
-			for ($i = 500; $i <= 2500; $i += 1000) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
+			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
 			?>
 
 			<img 
