@@ -38,7 +38,7 @@ $author = $page->title()
 					class="lazyimg lazyload" 
 					width="100%" height="auto">
 					<?php endif ?>
-					<div class="overlay<?php e($image && $image->luminance()->int() < 100, ' dark') ?>">
+					<div class="overlay<?php e($image && $image->luminance()->int() < 80, ' dark') ?>">
 						<div class="inner">
 							<h2><?= $project->theme()->html() ?></h2>
 							<h2><?= medianame($project->intendedTemplate()) ?></h2>
