@@ -29,4 +29,8 @@ $primaryCredits = structure($primaryCredits);
 	</div>
 </div>
 
+<div id="scroll-to-top" event-target="scroll-to-top">
+	<div class="row center"><span></span></div>
+</div>
+
 <?php snippet('footer') ?>

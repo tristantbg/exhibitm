@@ -84,11 +84,15 @@ $mediasCount = $medias->count();
 </div>
 
 <div id="infos-overlay" class="edito-infos contained" event-target="infos">
-		<?php foreach ($primaryCredits as $key => $pcredit): ?>
-			<div class="primary-credits">
-				<?= $pcredit->kt() ?>
-			</div>
-		<?php endforeach ?>
-	</div>
+	<?php foreach ($primaryCredits as $key => $pcredit): ?>
+		<div class="primary-credits">
+			<?= $pcredit->kt() ?>
+		</div>
+	<?php endforeach ?>
+</div>
+
+<div id="scroll-to-top" event-target="scroll-to-top">
+	<div class="row center"><span></span></div>
+</div>
 
 <?php snippet('footer') ?>

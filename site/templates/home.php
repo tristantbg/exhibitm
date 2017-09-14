@@ -34,7 +34,7 @@
 	
 	<?php if ($site->juicer()->isNotEmpty()): ?>
 	<div id="selectorHelp">
-		<div class="row center"><h2 event-target="feed">What's new ?</h2></div>
+		<div class="row center"><h2 event-target="feed">&nbsp;</h2></div>
 	</div>
 	<?php endif ?>
 
