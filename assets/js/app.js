@@ -23,6 +23,7 @@ $(function() {
                 $author = $("#author");
                 $selectors = $('.selector');
                 $infosOverlay = $("#infos-overlay");
+                $scrollToTop = $("#scroll-to-top");
                 app.sizeSet();
                 app.introCheck();
                 // History.Adapter.bind(window, 'statechange', function() {
@@ -116,6 +117,13 @@ $(function() {
                 app.ajaxLoading();
                 app.initSelector();
                 app.sectionsMagnet();
+                $(window).scroll(function(event) {
+                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                        $scrollToTop.show();
+                    } else  {
+                        $scrollToTop.hide();
+                    }
+                });
                 $(window).load(function() {
                     setTimeout(function() {
                         $(".loader").fadeOut("fast", function() {

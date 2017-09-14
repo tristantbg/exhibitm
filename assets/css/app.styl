@@ -263,10 +263,11 @@ figcaption
 
 #scroll-to-top
 	position fixed
+	left 0
 	bottom ($padding / 2)
 	height 1.5em
 	width 100%
-	// display none
+	display none
 	span::after
 		cursor pointer
 		transform-origin center
@@ -345,6 +346,8 @@ header
 			font-family 'PalatinoLTStdRoman'
 			font-style normal
 			text-decoration underline
+			-webkit-text-decoration-skip ink
+			text-decoration-skip ink
 		&.last
 			//margin-right 0
 	.text-credits
@@ -412,6 +415,8 @@ header
 			font-family 'PalatinoLTStdRoman'
 			font-style normal
 			text-decoration underline
+			-webkit-text-decoration-skip ink
+			text-decoration-skip ink
 
 #page-content
 	span(1)
