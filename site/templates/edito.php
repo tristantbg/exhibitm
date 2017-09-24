@@ -47,12 +47,12 @@ $mediasCount = $medias->count();
 
 			<?php 
 			$srcset = '';
-			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
+			for ($i = 500; $i <= 2500; $i += 500) $srcset .= $image->width($i)->url() . ' ' . $i . 'w,';
 			?>
 
 			<img 
-			src="<?= resizeOnDemand($image, 100) ?>" 
-			data-src="<?= resizeOnDemand($image, 1500) ?>" 
+			src="<?= $image->width(100)->url() ?>" 
+			data-src="<?= $image->width(1500)->url() ?>" 
 			data-srcset="<?= $srcset ?>" 
 			data-sizes="auto" 
 			data-optimumx="1.5" 
@@ -61,7 +61,7 @@ $mediasCount = $medias->count();
 			event-target="infos" 
 			height="100%" width="auto">
 			<noscript>
-				<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $caption ?>" width="100%" height="auto" />
+				<img src="<?= $image->width(1500)->url() ?>" alt="<?= $caption ?>" width="100%" height="auto" />
 			</noscript>
 			
 			<?php if($image->imagecredits()->isNotEmpty()): ?>

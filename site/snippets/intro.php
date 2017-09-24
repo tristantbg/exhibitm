@@ -10,7 +10,7 @@ $image = $page->introimage();
 
 ?>
 
-<div id="intro" class="center lazyload"<?php e($image->isNotEmpty(), ' data-bg="'.resizeOnDemand($image->toFile(),3000).'"') ?>>
+<div id="intro" class="center lazyload"<?php e($image->isNotEmpty(), ' data-bg="'.$image->toFile()->width(3000)->url().'"') ?>>
 	<div class="site-title row" event-target="enter">
 		<h1><?= $site->title()->html() ?></h1>
 	</div>
