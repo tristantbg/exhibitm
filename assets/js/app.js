@@ -26,15 +26,6 @@ $(function() {
                 $scrollToTop = $("#scroll-to-top");
                 app.sizeSet();
                 app.introCheck();
-                // History.Adapter.bind(window, 'statechange', function() {
-                //     var State = History.getState();
-                //     console.log(State);
-                //     var content = State.data;
-                //     if (content.type == 'project') {
-                //         $body.addClass('project loading');
-                //         app.loadContent(State.url + '/ajax', slidecontainer);
-                //     }
-                // });
                 $body.on('click', '.interview-section .question', function(event) {
                     event.preventDefault();
                     $(this).parent().toggleClass('open');
@@ -313,7 +304,7 @@ $(function() {
             $body.removeClass('opacify');
             app.repositionSelectors();
         },
-        updateFilters: function(resetTheme, resetMedia, resetAuthor) {
+        updateFilters: function(resetTheme, resetMedia, resetAuthor, reloadAuthor) {
             filters.theme = $('#themeSelector').find('.is-selected').data('value');
             filters.media = $('#mediaSelector').find('.is-selected').data('value');
             filters.author = $('#authorSelector').find('.is-selected').data('value');
@@ -322,10 +313,10 @@ $(function() {
             if (resetAuthor) filters.author = '';
             // combine filters
             filterValue = app.concatValues(filters);
-            console.log(filterValue);
-            app.loadAllSelectors(filterValue);
+            // console.log(filterValue);
+            app.loadAllSelectors(filterValue, reloadAuthor);
         },
-        loadAllSelectors: function(filter) {
+        loadAllSelectors: function(filter, reloadAuthor) {
             $.ajax({
                 url: $root + "/api/projects" + filter,
                 dataType: "json",
@@ -335,7 +326,7 @@ $(function() {
                 success: function(data) {
                     //themes
                     $json = data;
-                    console.log($json);
+                    // console.log($json);
                     var newList = $();
                     var uniq = [];
                     if (!isMobile || firstSelectInit) {
@@ -399,6 +390,7 @@ $(function() {
                     if (isMobile) {
                         // Init sliders on mobile
                         if (firstSelectInit) {
+                            $clone = $("#authorSelector").clone();
                             $('.selector').each(function(index, el) {
                                 $selectSliders[index] = $(this);
                                 $selectSliders[index].flickity({
@@ -414,14 +406,53 @@ $(function() {
                                 });
                                 $selectSliders[index].flkty = $selectSliders[index].data('flickity');
                                 $selectSliders[index].on('settle.flickity', function() {
-                                    app.updateFilters();
+                                    if (index === 2) {
+                                        app.updateFilters();
+                                    } else {
+                                        app.updateFilters(null, null, null, true);
+                                    }
                                 });
                                 $selectSliders[index].on('staticClick.flickity', function() {
                                     $selectSliders[index].flickity('select', 0, true, true);
-                                    app.updateFilters();
+                                    app.updateFilters(null, null, null, true);
                                 });
                             });
                         } else {
+                            if (reloadAuthor) {
+                                $("#authorSelector").remove();
+                                $("#mediaSelector").after($clone.clone());
+                                $("#author").children(':not([keep])').remove();
+                                //authors
+                                newList = $();
+                                uniq = [];
+                                $(data).each(function() {
+                                    if (!isInArray(uniq, this.author.slug)) {
+                                        $("#author").append($('<li>', {
+                                            "data-value": this.author.slug,
+                                            html: '<span>' + this.author.title + '</span>',
+                                        }));
+                                        uniq.push(this.author.slug);
+                                    }
+                                });
+                                $selectSliders[2] = $("#author").flickity({
+                                    cellSelector: 'li',
+                                    imagesLoaded: false,
+                                    setGallerySize: false,
+                                    accessibility: true,
+                                    wrapAround: true,
+                                    prevNextButtons: true,
+                                    pageDots: false,
+                                    draggable: true,
+                                    arrowShape: 'M28,50l40,50h-4L24,50L64,0h4L28,50z'
+                                });
+                                $selectSliders[2].on('settle.flickity', function() {
+                                    app.updateFilters();
+                                });
+                                $selectSliders[2].on('staticClick.flickity', function() {
+                                    $selectSliders[index].flickity('select', 0, true, true);
+                                    app.updateFilters();
+                                });
+                            }
                             if (data.length == 0) {
                                 $('#selectorSubmit h2').addClass('disabled');
                             } else {
@@ -453,7 +484,7 @@ $(function() {
                 loopBottom: false,
                 loopTop: false,
                 loopHorizontal: true,
-                continuousVertical: true,
+                continuousVertical: false,
                 continuousHorizontal: false,
                 scrollOverflow: !isMobile,
                 scrollOverflowReset: false,

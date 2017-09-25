@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="dns-prefetch" href="//www.google-analytics.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="google" content="notranslate" />
 	<link rel="canonical" href="<?php echo html($page->url()) ?>" />
 	<?php if($page->isHomepage()): ?>
 		<title><?= $site->title()->html() ?></title>
