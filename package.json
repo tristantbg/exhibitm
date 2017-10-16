@@ -14,10 +14,11 @@
     "rupture": "*"
   },
   "dependencies": {
-    "flickity": "^2.0.8",
+    "flickity": "^2.0.10",
     "fullpage.js": "^2.9.4",
     "jquery-ias": "^2.2.2",
+    "jquery-scrollTo": "^0.2.2",
     "jquery.scrollto": "^2.1.2",
-    "lazysizes": "^3.0.0"
+    "lazysizes": "^4.0.0"
   }
 }

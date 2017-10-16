@@ -9,7 +9,7 @@ var width = $(window).width(),
     filters = {},
     filterValue = "",
     isMobile,
-    $root = '/exhibitionmagazine';
+    $root = '/stage';
 $(function() {
     var app = {
         init: function() {
@@ -392,8 +392,7 @@ $(function() {
                         if (firstSelectInit) {
                             $clone = $("#authorSelector").clone();
                             $('.selector').each(function(index, el) {
-                                $selectSliders[index] = $(this);
-                                $selectSliders[index].flickity({
+                                $selectSliders[index] = new Flickity(this, {
                                     cellSelector: 'li',
                                     imagesLoaded: false,
                                     setGallerySize: false,
@@ -404,16 +403,15 @@ $(function() {
                                     draggable: true,
                                     arrowShape: 'M28,50l40,50h-4L24,50L64,0h4L28,50z'
                                 });
-                                $selectSliders[index].flkty = $selectSliders[index].data('flickity');
-                                $selectSliders[index].on('settle.flickity', function() {
+                                $selectSliders[index].on('settle', function() {
                                     if (index === 2) {
                                         app.updateFilters();
                                     } else {
                                         app.updateFilters(null, null, null, true);
                                     }
                                 });
-                                $selectSliders[index].on('staticClick.flickity', function() {
-                                    $selectSliders[index].flickity('select', 0, true, true);
+                                $selectSliders[index].on('staticClick', function() {
+                                    $selectSliders[index].select(0, true, true);
                                     app.updateFilters(null, null, null, true);
                                 });
                             });
@@ -434,7 +432,7 @@ $(function() {
                                         uniq.push(this.author.slug);
                                     }
                                 });
-                                $selectSliders[2] = $("#author").flickity({
+                                $selectSliders[2] = new Flickity("#author", {
                                     cellSelector: 'li',
                                     imagesLoaded: false,
                                     setGallerySize: false,
@@ -445,11 +443,11 @@ $(function() {
                                     draggable: true,
                                     arrowShape: 'M28,50l40,50h-4L24,50L64,0h4L28,50z'
                                 });
-                                $selectSliders[2].on('settle.flickity', function() {
+                                $selectSliders[2].on('settle', function() {
                                     app.updateFilters();
                                 });
-                                $selectSliders[2].on('staticClick.flickity', function() {
-                                    $selectSliders[index].flickity('select', 0, true, true);
+                                $selectSliders[2].on('staticClick', function() {
+                                    $selectSliders[index].select(0, true, true);
                                     app.updateFilters();
                                 });
                             }
@@ -475,48 +473,50 @@ $(function() {
         },
         sectionsMagnet: function() {
             var sectionsCount = $('.section-magnet').length;
-            $('#page-content.magnet').fullpage({
-                scrollingSpeed: 700,
-                autoScrolling: true,
-                scrollBar: true,
-                easing: 'easeInOutCubic',
-                easingcss3: 'ease',
-                loopBottom: false,
-                loopTop: false,
-                loopHorizontal: true,
-                continuousVertical: false,
-                continuousHorizontal: false,
-                scrollOverflow: !isMobile,
-                scrollOverflowReset: false,
-                scrollOverflowOptions: {
-                    scrollbars: false
-                },
-                touchSensitivity: 5,
-                normalScrollElements: '#infos-overlay',
-                normalScrollElementTouchThreshold: 5,
-                responsiveWidth: mobileWidth,
-                bigSectionsDestination: 'top',
-                navigation: false,
-                controlArrows: false,
-                verticalCentered: false,
-                sectionSelector: '.section-magnet',
-                onLeave: function(index, nextIndex) {
-                    if (nextIndex == 1) {
-                        $infosOverlay.fadeOut(300);
-                    }
-                },
-                afterLoad: function(anchorLink, index) {
-                    $infosOverlay.find('.image-credits').remove();
-                    $(this).find('.image-credits').clone().appendTo($infosOverlay);
-                    if (index == sectionsCount - 1) {
-                        var IScroll;
-                        IScroll = $('.fp-scrollable').data('iscrollInstance');
-                        if (IScroll) {
-                            IScroll.scrollTo(0, 0, 0);
+            if (sectionsCount > 1) {
+                $('#page-content.magnet').fullpage({
+                    scrollingSpeed: 700,
+                    autoScrolling: true,
+                    scrollBar: true,
+                    easing: 'easeInOutCubic',
+                    easingcss3: 'ease',
+                    loopBottom: false,
+                    loopTop: false,
+                    loopHorizontal: true,
+                    continuousVertical: false,
+                    continuousHorizontal: false,
+                    scrollOverflow: !isMobile,
+                    scrollOverflowReset: false,
+                    scrollOverflowOptions: {
+                        scrollbars: false
+                    },
+                    touchSensitivity: 5,
+                    normalScrollElements: '#infos-overlay',
+                    normalScrollElementTouchThreshold: 5,
+                    responsiveWidth: mobileWidth,
+                    bigSectionsDestination: 'top',
+                    navigation: false,
+                    controlArrows: false,
+                    verticalCentered: false,
+                    sectionSelector: '.section-magnet',
+                    onLeave: function(index, nextIndex) {
+                        if (nextIndex == 1) {
+                            $infosOverlay.fadeOut(300);
+                        }
+                    },
+                    afterLoad: function(anchorLink, index) {
+                        $infosOverlay.find('.image-credits').remove();
+                        $(this).find('.image-credits').clone().appendTo($infosOverlay);
+                        if (index == sectionsCount - 1) {
+                            var IScroll;
+                            IScroll = $('.fp-scrollable').data('iscrollInstance');
+                            if (IScroll) {
+                                IScroll.scrollTo(0, 0, 0);
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         },
         goIndex: function() {
             History.pushState({
