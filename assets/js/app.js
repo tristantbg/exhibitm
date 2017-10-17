@@ -9,6 +9,14 @@ var width = $(window).width(),
     filters = {},
     filterValue = "",
     isMobile,
+    easeFunctions = {
+        easeInOutCubic: function(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+        }
+    },
     $root = '/stage';
 $(function() {
     var app = {
@@ -33,15 +41,17 @@ $(function() {
                 });
                 $body.on('click', '[event-target="feed"]', function(event) {
                     event.preventDefault();
-                    $.scrollTo(document.getElementById("feed"), 800, {
+                    var moveTo = new MoveTo({
                         easing: 'easeInOutCubic'
-                    });
+                    }, easeFunctions);
+                    moveTo.move(document.getElementById('feed'));
                 });
                 $body.on('click', '[event-target="scroll-to-top"]', function(event) {
                     event.preventDefault();
-                    $.scrollTo(0, 800, {
+                    var moveTo = new MoveTo({
                         easing: 'easeInOutCubic'
-                    });
+                    }, easeFunctions);
+                    moveTo.move(0);
                 });
                 $body.on('click', '[event-target="infos"]', function(event) {
                     if ($(event.target).is('[event-target="infos"]')) {

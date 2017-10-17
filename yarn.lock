@@ -393,8 +393,8 @@ grunt-contrib-stylus@*:
     stylus "^0.54.0"
 
 grunt-contrib-uglify@*:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/grunt-contrib-uglify/-/grunt-contrib-uglify-3.0.1.tgz#fdeb5f938a4c8042f8e86ae46f63554e8e9511cb"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/grunt-contrib-uglify/-/grunt-contrib-uglify-3.1.0.tgz#10d1e4849210ec92bf0b08247e24186354d5e9ee"
   dependencies:
     chalk "^1.0.0"
     maxmin "^1.1.0"
@@ -564,19 +564,7 @@ jquery-ias@^2.2.2:
   dependencies:
     jquery ">=1.7"
 
-jquery-scrollTo@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/jquery-scrollTo/-/jquery-scrollTo-0.2.2.tgz#40b1be86fab5c51d39155bfeefda42105a7f607b"
-  dependencies:
-    jquery ">=2.2.0"
-
-jquery.scrollto@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/jquery.scrollto/-/jquery.scrollto-2.1.2.tgz#e7580d9c7ac46ef5bb25319483f6f45713fd7c6c"
-  dependencies:
-    jquery ">=1.8"
-
-jquery@>=1.6.0, jquery@>=1.7, jquery@>=1.8, jquery@>=2.2.0:
+jquery@>=1.6.0, jquery@>=1.7:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
@@ -685,6 +673,10 @@ mkdirp@0.5.x:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+moveto@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/moveto/-/moveto-1.7.0.tgz#3f0e9cbddcc17d17678ae705ceed52e4e3952f6f"
 
 ms@0.7.1:
   version "0.7.1"

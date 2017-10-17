@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['site/plugins/embed/assets/js/embed.js', 'node_modules/flickity/dist/flickity.pkgd.min.js', 'node_modules/lazysizes/lazysizes.min.js', 'node_modules/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'node_modules/lazysizes/plugins/unveilhooks/ls.unveilhooks.js', 'node_modules/fullpage.js/vendors/scrolloverflow.js', 'node_modules/fullpage.js/dist/jquery.fullpage.js', 'node_modules/jquery.scrollto/jquery.scrollTo.min.js', 'assets/js/vendor/jquery-ias.min.js', 'assets/js/vendor/jquery.mobile.custom/jquery.mobile.custom.min.js'],
+                src: ['node_modules/moveTo/dist/moveTo.js', 'site/plugins/embed/assets/js/embed.js', 'node_modules/flickity/dist/flickity.pkgd.min.js', 'node_modules/lazysizes/lazysizes.min.js', 'node_modules/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'node_modules/lazysizes/plugins/unveilhooks/ls.unveilhooks.js', 'node_modules/fullpage.js/vendors/scrolloverflow.js', 'node_modules/fullpage.js/dist/jquery.fullpage.js', 'assets/js/vendor/jquery-ias.min.js', 'assets/js/vendor/jquery.mobile.custom/jquery.mobile.custom.min.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {
