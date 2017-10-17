@@ -23,6 +23,7 @@ files:
         - link
         - italic
 fields:
+  reveal: reveal
   prevnext: prevnext
   tab1:
     label: Infos

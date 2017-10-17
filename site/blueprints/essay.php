@@ -5,6 +5,7 @@ pages: false
 files: true
 icon: font
 fields:
+  reveal: reveal
   prevnext: prevnext
   tab1:
     label: Infos

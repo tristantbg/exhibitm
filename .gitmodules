@@ -28,3 +28,6 @@
 [submodule "site/plugins/imagekit"]
 	path = site/plugins/imagekit
 	url = https://github.com/fabianmichael/kirby-imagekit.git
+[submodule "site/plugins/kirby-reveal"]
+	path = site/plugins/kirby-reveal
+	url = https://github.com/jenstornell/kirby-reveal

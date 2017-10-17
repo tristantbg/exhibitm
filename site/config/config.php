@@ -48,6 +48,7 @@ c::set('typography.hyphenation.headings', false);
 c::set('typography.hyphenation.allcaps', false);
 c::set('typography.hyphenation.titlecase', false);
 //Settings
+c::set('plugin.reveal.refresh', 0);
 c::set('sitemap.exclude', array('error'));
 c::set('thumb.quality', 100);
 //c::set('thumbs.driver', 'im');
