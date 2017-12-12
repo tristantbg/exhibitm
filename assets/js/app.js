@@ -17,7 +17,7 @@ var width = $(window).width(),
             return c / 2 * (t * t * t + 2) + b;
         }
     },
-    $root = '/stage';
+    $root = '/exhibitionmagazine';
 $(function() {
     var app = {
         init: function() {
@@ -46,12 +46,12 @@ $(function() {
                     }, easeFunctions);
                     moveTo.move(document.getElementById('feed'));
                 });
-                $body.on('click', '[event-target="scroll-to-top"]', function(event) {
+                $('[event-target="scroll-to-top"]').click(function(event) {
                     event.preventDefault();
                     var moveTo = new MoveTo({
                         easing: 'easeInOutCubic'
                     }, easeFunctions);
-                    moveTo.move(0);
+                    moveTo.move($body[0]);
                 });
                 $body.on('click', '[event-target="infos"]', function(event) {
                     if ($(event.target).is('[event-target="infos"]')) {

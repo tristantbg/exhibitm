@@ -18,6 +18,6 @@
     "fullpage.js": "^2.9.4",
     "jquery-ias": "^2.2.2",
     "lazysizes": "^4.0.0",
-    "moveto": "^1.7.0"
+    "moveto": "^1.7.1"
   }
 }
