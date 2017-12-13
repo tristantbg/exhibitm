@@ -24,6 +24,8 @@ global-reset()
 //Juicer
 @import 'juicer.styl'
 
+@import 'landing.styl'
+
 webfont('DINBold', 'DINBold', false, 'normal')
 webfont('DINCondensedBold', 'DINCondensedBold', false, 'normal')
 webfont('PalatinoLTStdRoman', 'CochinLTStd', false, 'normal')
@@ -55,12 +57,14 @@ body
 	text-rendering optimizeLegibility
 	font-smoothing()
 	color $secondary
+	+below($md)
+		font-size 3rem
 
 p
 	margin-bottom 1em
 	line-height 130%
 	+below($md)
-		font-size 2.7rem
+		font-size 3rem
 
 p:last-child
 	margin-bottom 0
@@ -83,11 +87,11 @@ strong
 		width 100%
 		background $secondary
 
-h1, h2, .selector, .lead, .exergue
+h1, h2, .menu-selector, .lead, .exergue
 	text-transform uppercase
 	font-family 'DINCondensedBold'
 
-.primary-credits, .image-credits
+.primary-credits, .image-credits, #about-text .primary-credits
 	a, strong
 		text-transform uppercase
 		font-family 'DINBold'
@@ -95,7 +99,7 @@ h1, h2, .selector, .lead, .exergue
 h1.title, h2.title
 	font-size 7.5rem
 
-h1, h2, .selector, .exergue-section .exergue
+h1, h2, .menu-selector, .exergue-section .exergue
 	font-size 3.1rem
 	+below($md)
 		font-size 5rem
@@ -597,14 +601,14 @@ html.dark
 		background $primary
 	#mainSelector, #smallSelector
 		.groupSelector
-			ul.selector
+			ul.menu-selector
 				li
 					span::after
 						background $primary
 					&:hover:not(.is-selected), &.highlight
 						span
 							color $secondary
-		ul.selector.is-selecting
+		ul.menu-selector.is-selecting
 			cursor url('../../images/close-w.png') 8 8, default
 			li
 				cursor url('../../images/close-w.png') 8 8, default
@@ -634,7 +638,7 @@ body.leaving
 	cursor wait
 	#mainSelector, #smallSelector
 		.groupSelector
-			ul.selector.is-selecting
+			ul.menu-selector.is-selecting
 				cursor wait
 				li
 					cursor wait

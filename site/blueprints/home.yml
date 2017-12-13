@@ -1,0 +1,98 @@
+title: Page
+pages: true
+files: true
+fields:
+  title:
+    label: Title
+    type:  text
+    width: 3/4
+  pagetheme:
+    label: Theme
+    type: select
+    options:
+      light: Light
+      dark: Dark
+    default: light
+    required: true
+    width: 1/4
+  landingHeadline:
+    label: Landing
+    type:  headline
+  landingimage:
+    label: Background Image
+    type:  quickselect
+    options: images
+  landingTitle:
+    label: Title
+    type:  text
+    width: 1/2
+  landingTitleLink:
+    label: Title link
+    type:  quickselect
+    options: query
+    query:
+      page: /
+      fetch: pages
+      value: '{{uri}}'
+      text: '{{title}} ({{uri}})'
+    width: 1/2
+  landingSubtitle:
+    label: Subtitle Title
+    type:  text
+    width: 1/2
+  landingSubtitleLink:
+    label: Subtitle link
+    type:  quickselect
+    options: query
+    query:
+      page: /
+      fetch: pages
+      value: '{{uri}}'
+      text: '{{title}} ({{uri}})'
+    width: 1/2
+  shopLink:
+  	label: Shop Link
+  	type: url
+  aboutHeadline:
+    label: About
+    type:  headline
+  text:
+    label: About Intro
+    type: textarea
+  aboutText:
+    label: About Text
+    type: textarea
+  # live:
+  #   label: Show intro ?
+  #   type:  toggle
+  # introtitle:
+  #   label: Title
+  #   type:  text
+  #   width: 1/2
+  # introimage:
+  #   label: Background Image
+  #   type:  image
+  #   width: 1/2
+  # introlink:
+  #   label: Title link
+  #   type:  url
+  #   width: 1/2
+  # intropopup:
+  #   label: Popup
+  #   type:  toggle
+  #   width: 1/2
+  # introlinks:
+  #   label: Links
+  #   type: structure
+  #   style: table
+  #   fields:
+  #     linktitle:
+  #       label: Link title
+  #       type: text
+  #       required: true
+  #     linkurl:
+  #       label: Link URL
+  #       type: url
+  #     popup:
+  #       label: Popup
+  #       type: toggle

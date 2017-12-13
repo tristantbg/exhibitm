@@ -53,13 +53,12 @@ c::set('sitemap.exclude', array('error'));
 c::set('thumb.quality', 100);
 //c::set('thumbs.driver', 'im');
 c::set('routes', array(
-	// array(
-	// 	'pattern' => 'info/(:any)',
-	// 	'action'  => function($uri,$uid) {
-	// 		$page = site()->homePage();
-	// 		go($page);
-	// 	}
-	// 	),
+	array(
+		'pattern' => 'themes/(:any)',
+		'action'  => function($uid) {
+			go("projects/theme:".$uid);
+		}
+	),
 	array(
 		'pattern' => 'robots.txt',
 		'action' => function () {

@@ -1,0 +1,96 @@
+#landing
+	span(1)
+	height 100vh
+	background-size cover
+	z-index 9000
+	.site-title
+		position absolute
+		top 0
+		left 0
+		width 100%
+		padding $padding 0
+	.inner
+		width 100%
+		height 100%
+		position absolute
+		top 0
+		left 0
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+	a:nth-child(2) h2.title
+		margin-top 1.5em
+	#intro-links
+		display flex
+		position absolute
+		bottom 5em
+		width 100%
+		left 0
+		// +below($md)
+		// 	flex-direction column
+		.link-item
+			width 100%
+			a
+				position relative
+				&::after
+					content ''
+					width 100%
+					height 1px
+					position absolute
+					bottom 0
+					left 0
+					background $primary
+			+below($md)
+				margin-bottom 1em
+	#arrow
+		position absolute
+		bottom 2em
+		left 0
+		width 100%
+	#about-text
+		z-index 1100
+		position absolute
+		top 0
+		left 0
+		padding $padding
+		height 100vh
+		width 30%
+		display flex
+		flex-direction column
+		text-align left
+		overflow-y scroll
+		background $primary
+		transition transform 500ms $kinetic
+		transform translateX(-100%) translateZ(0)
+		+below($md)
+			width 100%
+		&.visible
+			transform none
+		&::webkit-scrollbar
+			display none
+		.primary-credits
+			flex 1 1 auto
+		& > div
+			margin-bottom $padding
+		& > div:last-child
+			margin-bottom 0
+			a
+				position relative
+				&::after
+					content ''
+					width 100%
+					height 1px
+					position absolute
+					bottom 0
+					left 0
+					background $primary
+
+.dark #landing
+	#about-text
+		background $secondary
+	#intro-links
+		.link-item
+				&::after
+					background $secondary
+		

@@ -102,7 +102,7 @@
 			overflow hidden
 		+below($md)
 			span(1)
-		ul.selector
+		ul.menu-selector
 			padding 3em 0
 			position relative
 			z-index 100
@@ -111,6 +111,8 @@
 	span(1)
 	padding ($padding/2) 0
 	overflow hidden
+	display flex
+	justify-content center
 	+below($md)
 		display none
 	#selectorTitle, #selectorSubmit
@@ -119,7 +121,7 @@
 		z-index 10
 	.groupSelector
 		span(1/4)
-		ul.selector
+		ul.menu-selector
 			padding-bottom .5em
 
 #mainSelector, #smallSelector
@@ -130,7 +132,7 @@
 			justify-content center
 			align-items center
 			flex-direction column
-		ul.selector
+		ul.menu-selector
 			position relative
 			z-index 100
 			li
@@ -184,11 +186,11 @@
 				&.is-selected:not([default])::after
 					//transform(scaleY(1))
 				
-		ul.selector.is-selecting
+		ul.menu-selector.is-selecting
 			cursor url('../../images/close-b.png') 8 8, default
 			li
 				cursor url('../../images/close-b.png') 8 8, default
-		ul.selector:not(.is-selecting):hover
+		ul.menu-selector:not(.is-selecting):hover
 			li[default]
 				+above($md + 1)
 					display none

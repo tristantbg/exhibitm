@@ -17,7 +17,7 @@ var width = $(window).width(),
             return c / 2 * (t * t * t + 2) + b;
         }
     },
-    $root = '/exhibitionmagazine';
+    $root = '/stage';
 $(function() {
     var app = {
         init: function() {
@@ -29,11 +29,11 @@ $(function() {
                 $theme = $("#theme");
                 $media = $("#media");
                 $author = $("#author");
-                $selectors = $('.selector');
+                $selectors = $('.menu-selector');
                 $infosOverlay = $("#infos-overlay");
                 $scrollToTop = $("#scroll-to-top");
                 app.sizeSet();
-                app.introCheck();
+                // app.introCheck();
                 $body.on('click', '.interview-section .question', function(event) {
                     event.preventDefault();
                     $(this).parent().toggleClass('open');
@@ -59,6 +59,12 @@ $(function() {
                         $infosOverlay.fadeToggle(300);
                     }
                 });
+                $body.on('click', '#landing .inner, #about-text div:not(:last-child)', function(event) {
+                    document.getElementById('about-text').classList.remove('visible');
+                });
+                $body.on('click', '[event-target="about"]', function(event) {
+                    document.getElementById('about-text').classList.toggle('visible');
+                });
                 $body.on('tap', '#infos-overlay[event-target="infos"]', function(event) {
                     if (Modernizr.touch && $(event.target).is('[event-target="infos"]')) {
                         event.preventDefault();
@@ -66,15 +72,15 @@ $(function() {
                     }
                 });
                 if (!isMobile) {
-                    $('.page ul.selector').hover(function() {
+                    $('.page ul.menu-selector').hover(function() {
                         $body.addClass('opacify');
                     }, function() {
                         $body.removeClass('opacify');
                     });
                     $('body:not(".page") #container').mousemove(function(event) {
                         el = $(event.target);
-                        if (el.is('.selector span') || el.is('.selector li') || el.is('.selector')) {
-                            parent = el.parents('.selector');
+                        if (el.is('.menu-selector span') || el.is('.menu-selector li') || el.is('.menu-selector')) {
+                            parent = el.parents('.menu-selector');
                             if (!parent.hasClass('is-selecting') && parent.hasClass('hover')) {
                                 msg = ((event.pageY - height * 0.29) / height) / 50 * 100 - 0.5;
                                 parent.css('transform', 'translateY(' + -msg * 100 + '%) translateZ(0)');
@@ -85,8 +91,8 @@ $(function() {
                     });
                     $('#smallSelector').mousemove(function(event) {
                         el = $(event.target);
-                        if (el.is('.selector span') || el.is('.selector li') || el.is('.selector')) {
-                            parent = el.parents('.selector');
+                        if (el.is('.menu-selector span') || el.is('.menu-selector li') || el.is('.menu-selector')) {
+                            parent = el.parents('.menu-selector');
                             if (!parent.hasClass('is-selecting') && parent.hasClass('hover')) {
                                 msg = ((event.pageY - 100 - $(window).scrollTop()) / height * 110);
                                 if (msg < 0) {
@@ -98,7 +104,7 @@ $(function() {
                             app.repositionSelectors();
                         }
                     });
-                    $('ul.selector').hover(function() {
+                    $('ul.menu-selector').hover(function() {
                         $(this).addClass('hover');
                     }, function() {
                         $(this).removeClass('hover');
@@ -258,16 +264,20 @@ $(function() {
                 $('#authorSelector').change(function() {
                     app.updateFilters();
                 });
-                $body.on('click', '.selector:not(".is-selecting") li', function(event) {
+                $body.on('click', '.menu-selector.selector:not(".is-selecting") li', function(event) {
                     event.preventDefault();
                     app.select($(this));
                 });
-                $body.on('click', '.selector.is-selecting', function(event) {
+                $body.on('click', '.menu-selector.selector.is-selecting', function(event) {
                     event.preventDefault();
                     if ($(this).is($theme)) {
-                        app.unselect($('.selector'));
+                        app.unselect($('.menu-selector'));
                     }
                     app.unselect($(this));
+                });
+                $body.on('click', 'span[href]', function(event) {
+                    event.preventDefault();
+                    window.location.href = this.getAttribute("href");
                 });
             }
             $body.on('click', '#selectorSubmit h2:not(.disabled)', function(event) {
@@ -401,7 +411,7 @@ $(function() {
                         // Init sliders on mobile
                         if (firstSelectInit) {
                             $clone = $("#authorSelector").clone();
-                            $('.selector').each(function(index, el) {
+                            $('.menu-selector').each(function(index, el) {
                                 $selectSliders[index] = new Flickity(this, {
                                     cellSelector: 'li',
                                     imagesLoaded: false,

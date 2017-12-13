@@ -142,7 +142,7 @@ fields:
     type:  tabs
   medias:
     label: Images
-    type: gallery
+    type: images
   tab3:
     label: Theme
     type:  tabs

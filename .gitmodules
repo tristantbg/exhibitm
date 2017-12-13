@@ -31,3 +31,6 @@
 [submodule "site/plugins/kirby-reveal"]
 	path = site/plugins/kirby-reveal
 	url = https://github.com/jenstornell/kirby-reveal
+[submodule "site/plugins/images"]
+	path = site/plugins/images
+	url = https://github.com/medienbaecker/kirby-images.git

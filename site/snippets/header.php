@@ -67,7 +67,7 @@
 	<?php endif ?>
 
 </head>
-<body<?php e(!$page->isHomepage(), ' class="page"') ?>>
+<body<?php e(!$page->isHomepage() && $page->intendedTemplate() != "search", ' class="page"') ?>>
 
 <div id="outdated">
 	<div class="inner">
@@ -86,7 +86,7 @@
 	<a href="<?= $site->url() ?>"><h1><?= $site->title()->html() ?></h1></a>
 	</div>
 
-	<?php if(!$page->isHomepage()) { snippet('selector'); } ?>
+	<?php if(!$page->isHomepage() && $page->intendedTemplate() != "search") { snippet('tiny-selector'); } ?>
 
 </header>
 
@@ -95,5 +95,7 @@
 	<a href="<?= $site->url() ?>"><h2>I want</h2></a>
 </div>
 <?php endif ?>
+
+<?php if($page->isHomepage()) { snippet('landing'); } ?>
 
 <div id="container"<?php e($page->intendedTemplate() == "edito", ' class="edito"') ?>>
