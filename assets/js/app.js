@@ -59,7 +59,7 @@ $(function() {
                         $infosOverlay.fadeToggle(300);
                     }
                 });
-                $body.on('click', '#landing .inner, #about-text div:not(:last-child)', function(event) {
+                $body.on('click', '#landing .inner', function(event) {
                     document.getElementById('about-text').classList.remove('visible');
                 });
                 $body.on('click', '[event-target="about"]', function(event) {

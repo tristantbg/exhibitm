@@ -59,6 +59,9 @@ $search = page("search");
 	<?php endif ?>
 	
 	<div id="about-text">
+		<a event-target="about">
+			<img src="<?= url('assets/images/itw-arrow-w.svg') ?>">
+		</a>
 		<div>
 			<?= $page->text()->kt() ?>
 		</div>

@@ -49,7 +49,7 @@
 		left 0
 		width 100%
 	#about-text
-		z-index 1100
+		z-index 900
 		position absolute
 		top 0
 		left 0
@@ -63,8 +63,17 @@
 		background $primary
 		transition transform 500ms $kinetic
 		transform translateX(-100%) translateZ(0)
+		[event-target=about]
+			width 1.4em
+			position absolute
+			top 50%
+			right $padding
+			transform translateY(-50%) rotate(90deg)
+		&::-webkit-scrollbar
+			display none
 		+below($md)
 			width 100%
+			padding-top 10rem
 		&.visible
 			transform none
 		&::webkit-scrollbar
