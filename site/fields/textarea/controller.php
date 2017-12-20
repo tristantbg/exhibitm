@@ -10,15 +10,6 @@ class TextareaFieldController extends Kirby\Panel\Controllers\Field {
     return $this->modal('link', compact('form'));
 
   }
-
-  public function quote() {
-
-    $page = $this->model();
-    $form = $this->form('quote', array($page, $this->fieldname()));
-
-    return $this->modal('quote', compact('form'));
-
-  }
   
   public function pagelink() {
   

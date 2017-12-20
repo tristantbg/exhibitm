@@ -562,7 +562,7 @@ $(function() {
                 negativeMargin: 250
             });
             ias.extension(new IASSpinnerExtension({
-                html: '<div class="ias-loading row center"><h2>Loading next items…</h2></div>',
+                html: '<div class="ias-loading row center"><h2>Please wait</h2></div>',
             }));
         },
         loadContent: function(url, target) {

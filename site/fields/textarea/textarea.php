@@ -4,6 +4,7 @@ class TextareaField extends TextField {
   
   static public $assets = array(
     'js' => array(
+      'jquery.textcomplete.min.js',
       'editor.js'
     ),
     'css' => array(
@@ -49,11 +50,6 @@ class TextareaField extends TextField {
       array(
         'pattern' => 'email',
         'action'  => 'email',
-        'method'  => 'get|post'
-      ),
-      array(
-        'pattern' => 'quote',
-        'action'  => 'quote',
         'method'  => 'get|post'
       ),
     );

@@ -1,31 +1,4 @@
-<div class="modal-content pagelink">
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $(".slidedown.active").on('click', function() {
-        $(this).toggleClass("open")
-               .closest(".page").children(".subpages").slideToggle(250, function() {
-                  $(".modal-content").data('height', $(".modal-content").height());
-                 $(".modal-content").animate({
-                     marginTop: -(Math.round($(".modal-content").data('height') / 2))
-                 }, 150);
-               });
-          setTimeout(function() {
-        	$(window).trigger('resize');
-        }, 500);
-      });
-      $(".link.smalllink").on('click', function() {        
-        textarea = $("#" + $(".modal form").data("textarea"));
-        link = $(this).data("link");
-        name = $(this).siblings(".name").html();
-        var sel  = textarea.getSelection();
-        if(sel.length > 0) name = sel;
-        textarea.insertAtCursor("(link: " + link + " text: " + name + ")" );
-        textarea.trigger('autosize.resize');
-        app.modal.close();
-      });
-    });
-  </script>
+<div class="modal-content pagelink modal-content-large">
   
   <form class="form" data-textarea="form-field-<?= $fieldname ?>" data-autosubmit="false" data-kirbytext="true">
 

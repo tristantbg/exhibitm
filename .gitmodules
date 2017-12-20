@@ -34,3 +34,6 @@
 [submodule "site/plugins/images"]
 	path = site/plugins/images
 	url = https://github.com/medienbaecker/kirby-images.git
+[submodule "site/plugins/xml-sitemap"]
+	path = site/plugins/xml-sitemap
+	url = https://github.com/pedroborges/kirby-xml-sitemap.git
