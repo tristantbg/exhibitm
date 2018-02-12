@@ -87,6 +87,29 @@ strong
 		width 100%
 		background $secondary
 
+#language-switch
+	position fixed
+	bottom $padding
+	right $padding
+	white-space nowrap
+	font-family 'DINCondensedBold'
+	+below($md)
+		width 100%
+		text-align center
+		right 0
+		font-size 5rem
+	[language-switch]
+		cursor pointer
+		position relative
+	[language-switch].active::after
+		content ''
+		position absolute
+		bottom 0
+		left 0
+		height 2px
+		width 100%
+		background $secondary
+
 h1, h2, .menu-selector, .lead, .exergue
 	text-transform uppercase
 	font-family 'DINCondensedBold'
@@ -430,6 +453,8 @@ header
 		margin-top 20rem
 	#essay-content
 		margin-bottom $spaceBetween
+		&.english
+			display none
 		img
 			display block
 		h1,h2,h3,h4

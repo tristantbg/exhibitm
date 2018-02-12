@@ -112,7 +112,10 @@ fields:
     label: Content
     type:  tabs
   essay:
-    label: Essay
+    label: Essay (FR)
+    type:  textarea
+  essayEnglish:
+    label: Essay (EN)
     type:  textarea
   tab3:
     label: Theme

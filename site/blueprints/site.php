@@ -2,6 +2,7 @@
 
 title: Site
 fields:
+  lock: false
   generalSettings:
     label: Site Settings
     type: headline

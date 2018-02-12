@@ -53,11 +53,11 @@
 	<link rel="icon" href="<?php //url('assets/images/favicon.ico') ?>" type="image/x-icon"> -->
 
 	<?php 
-	echo css('assets/css/build/build.min.css?=v2');
+	echo css('assets/css/build/build.min.css');
 	echo js('assets/js/vendor/modernizr.min.js');
 	?>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script>window.jQuery || document.write('<script src="<?= url('assets/js/vendor/jquery.min.js') ?>">\x3C/script>')</script>
 
 	<?php if(!$site->customcss()->empty()): ?>

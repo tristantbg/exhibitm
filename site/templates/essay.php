@@ -24,9 +24,17 @@ $primaryCredits = structure($primaryCredits);
 		<?php snippet('project-infos', array('page' => $page, 'primaryCredits' => $primaryCredits)) ?>
 	</div>
 
-	<div id="essay-content" class="row">
+	<div id="essay-content" class="row french">
 		<?= $page->essay()->kt() ?>
 	</div>
+
+	<?php if ($page->essayEnglish()->isNotEmpty()): ?>
+		<div id="essay-content" class="row english">
+			<?= $page->essayEnglish()->kt() ?>
+		</div>
+
+		<div id="language-switch"><span class="active" language-switch="fr">FR</span>&nbsp;|&nbsp;<span language-switch="en">EN</span></div>
+	<?php endif ?>
 </div>
 
 <div id="scroll-to-top" event-target="scroll-to-top">
