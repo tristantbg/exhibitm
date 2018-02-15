@@ -37,6 +37,16 @@ c::set('cache.driver', 'apc');
 c::set('plugin.embed.video.lazyload', true);
 c::set('plugin.embed.video.lazyload.btn', 'assets/images/play.png');
 c::set('kirbytext.image.figure', false);
+c::set('textarea.buttons', array(
+  "h1",
+  "h2",
+  "bold",
+  "italic",
+  "blockquote",
+  "link",
+  "page",
+  "email"
+));
 //Typo
 c::set('typography', true);
 c::set('typography.ordinal.suffix', false);

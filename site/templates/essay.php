@@ -24,12 +24,12 @@ $primaryCredits = structure($primaryCredits);
 		<?php snippet('project-infos', array('page' => $page, 'primaryCredits' => $primaryCredits)) ?>
 	</div>
 
-	<div id="essay-content" class="row french">
+	<div id="essay-content" class="row l-toggle french">
 		<?= $page->essay()->kt() ?>
 	</div>
 
 	<?php if ($page->essayEnglish()->isNotEmpty()): ?>
-		<div id="essay-content" class="row english">
+		<div id="essay-content" class="row l-toggle english">
 			<?= $page->essayEnglish()->kt() ?>
 		</div>
 

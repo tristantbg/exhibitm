@@ -24,13 +24,26 @@ $primaryCredits = structure($primaryCredits);
 		<?php snippet('project-infos', array('page' => $page, 'primaryCredits' => $primaryCredits)) ?>
 	</div>
 
-	<div id="interview-content" class="row">
+	<div id="interview-content" class="row l-toggle french">
 		<?php foreach($page->interview()->toStructure() as $section): ?>
 
 			<?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
 			
 		<?php endforeach ?>
 	</div>
+
+	<?php if ($page->interviewEnglish()->isNotEmpty()): ?>
+		<div id="interview-content" class="row l-toggle english">
+			<?php foreach($page->interviewEnglish()->toStructure() as $section): ?>
+
+				<?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
+				
+			<?php endforeach ?>
+		</div>
+
+		<div id="language-switch"><span class="active" language-switch="fr">FR</span>&nbsp;|&nbsp;<span language-switch="en">EN</span></div>
+	<?php endif ?>
+
 </div>
 
 <div id="scroll-to-top" event-target="scroll-to-top">

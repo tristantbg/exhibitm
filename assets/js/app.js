@@ -75,11 +75,11 @@ $(function() {
           $("[language-switch]").removeClass('active');
           this.classList.add("active");
           if (this.getAttribute('language-switch') == "en") {
-            $("#essay-content.french").hide();
-            $("#essay-content.english").show();
+            $(".l-toggle.french").hide();
+            $(".l-toggle.english").show();
           } else {
-            $("#essay-content.french").show();
-            $("#essay-content.english").hide();
+            $(".l-toggle.french").show();
+            $(".l-toggle.english").hide();
           }
         });
         if (!isMobile) {

@@ -112,7 +112,20 @@ fields:
     label: Content
     type:  tabs
   interview:
-    label: Interview
+    label: Interview (FR)
+    type: builder
+    fieldsets:
+      interviewsection:
+        label: Question/Answer
+        fields:
+          question:
+            label: Question
+            type: textarea
+          answer:
+            label: Answer
+            type: textarea
+  interviewEnglish:
+    label: Interview (EN)
     type: builder
     fieldsets:
       interviewsection:
