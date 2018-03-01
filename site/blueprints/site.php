@@ -1,6 +1,8 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Site
+pages:
+  template: default
 fields:
   lock: false
   generalSettings:

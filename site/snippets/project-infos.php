@@ -31,7 +31,7 @@ $data = array("primaryCredits" => $primaryCredits, "subtitle" => $subtitle, "tex
 	<h1 class="title"><?= $author->html() ?></h1>
 	<h2><?= $page->theme()->html().' Issue' ?></h2>
 </div>
-<div class="row pt-5 pb-10">
+<div class="row pt-5<?php e($page->intendedTemplate() != "edito", " pb-10") ?>">
 	<?php 
 	switch ($pattern) {
 		case [4, 0, 2]:

@@ -53,7 +53,7 @@ html
 
 body
 	font-family 'PalatinoLTStdRoman', Helvetica Neue, Arial, sans-serif
-	font-size 2rem
+	font-size 1.8rem
 	text-rendering optimizeLegibility
 	font-smoothing()
 	color $secondary
@@ -575,7 +575,7 @@ header
 		.overlay.dark
 			color $primary
 			.inner
-				vendor(filter, drop-shadow(0 0 10px $secondary))
+				vendor(filter, drop-shadow(0 0 6px alpha($secondary, 0.3)))
 	.project-item:not(.no-featured):hover
 		img
 			+above($md + 1)

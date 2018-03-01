@@ -40,7 +40,9 @@ $author = $page->title()
 					<?php endif ?>
 					<div class="overlay<?php e($image && $image->luminance()->int() < 80, ' dark') ?>">
 						<div class="inner">
+							<?php if (!param("theme")): ?>
 							<h2><?= $project->theme()->html() ?></h2>
+							<?php endif ?>
 							<h2><?= medianame($project->intendedTemplate()) ?></h2>
 							<h2><?= $project->parent()->title()->html() ?></h2>
 						</div>

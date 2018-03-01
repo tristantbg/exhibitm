@@ -92,7 +92,7 @@
 
 <?php if (in_array($page->intendedTemplate(), array('artist','collaborator','edito','interview','essay'))): ?>
 <div id="mobile-selector">
-	<a href="<?= $site->url() ?>"><h2>I want</h2></a>
+	<a href="<?= page("search")->url() ?>"><h2>I want</h2></a>
 </div>
 <?php endif ?>
 

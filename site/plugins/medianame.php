@@ -15,13 +15,13 @@ function medianame($text){
 
 	switch ($text) {
 		case 'edito':
-			$text = 'Edito by';
+			$text = 'Images by';
 			break;
 		case 'interview':
 			$text = 'Interview of';
 			break;
 		case 'essay':
-			$text = 'Essay by';
+			$text = 'Words by';
 			break;
 		default:
 			return 'n-a';
