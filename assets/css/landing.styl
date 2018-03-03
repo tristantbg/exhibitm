@@ -64,11 +64,14 @@
 		background $primary
 		transition transform 500ms $kinetic
 		transform translateX(-100%) translateZ(0)
+		+below($md)
+			transition transform 300ms ease
 		[event-target=about]
-			width 1.4em
+			width 9rem
+			padding 3rem
 			position absolute
 			top 50%
-			right $padding
+			right 0
 			transform translateY(-50%) rotate(90deg)
 		&::-webkit-scrollbar
 			display none
