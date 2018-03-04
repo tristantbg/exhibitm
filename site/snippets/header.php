@@ -10,8 +10,8 @@
 	<link rel="canonical" href="<?php echo html($page->url()) ?>" />
 	<?php if($page->isHomepage()): ?>
 		<title><?= $site->title()->html() ?></title>
-	<?php else: ?>
-		<title><?= $page->title()->html() ?> | <?= $site->title()->html() ?></title>
+	<?php elseif(in_array($page->intendedTemplate(), array('edito','interview','essay'))): ?>
+		<title><?= $page->title()->html().', '.$page->parent()->title()->html() ?> | <?= $site->title()->html() ?></title>
 	<?php endif ?>
 	<?php if($page->isHomepage()): ?>
 		<meta name="description" content="<?= $site->description()->html() ?>">
