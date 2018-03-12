@@ -17,7 +17,7 @@ var width = $(window).width(),
       return c / 2 * (t * t * t + 2) + b;
     }
   },
-  $root = '/stage';
+  $root = '';
 $(function() {
   var app = {
     init: function() {
@@ -66,7 +66,7 @@ $(function() {
           document.getElementById('about-text').classList.toggle('visible');
         });
         $body.on('tap', '#infos-overlay[event-target="infos"]', function(event) {
-          if (Modernizr.touch && $(event.target).is('[event-target="infos"]')) {
+          if (Modernizr.touchevents && $(event.target).is('[event-target="infos"]')) {
             event.preventDefault();
             $infosOverlay.fadeToggle(300);
           }
@@ -150,7 +150,7 @@ $(function() {
       width = $(window).width();
       height = $(window).height();
       if (typeof isMobile == "undefined") {
-        if (width <= mobileWidth || Modernizr.touch) {
+        if (width <= mobileWidth || Modernizr.touchevents) {
           isMobile = true;
         } else {
           isMobile = false;
