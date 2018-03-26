@@ -12,6 +12,8 @@
 		<title><?= $site->title()->html() ?></title>
 	<?php elseif(in_array($page->intendedTemplate(), array('edito','interview','essay'))): ?>
 		<title><?= $page->title()->html().', '.$page->parent()->title()->html() ?> | <?= $site->title()->html() ?></title>
+	<?php else: ?>
+		<title><?= $page->title()->html().' | '.$site->title()->html() ?></title>
 	<?php endif ?>
 	<?php if($page->isHomepage()): ?>
 		<meta name="description" content="<?= $site->description()->html() ?>">
@@ -22,9 +24,9 @@
 			<meta name="DC.Description" content="<?= $page->text()->excerpt(250) ?>"/ >
 			<meta property="og:description" content="<?= $page->text()->excerpt(250) ?>" />
 		<?php else: ?>
-			<meta name="description" content="">
-			<meta name="DC.Description" content=""/ >
-			<meta property="og:description" content="" />
+			<meta name="description" content="<?= $site->description()->html() ?>">
+			<meta name="DC.Description" content="<?= $site->description()->html() ?>"/ >
+			<meta property="og:description" content="<?= $site->description()->html() ?>" />
 		<?php endif ?>
 	<?php endif ?>
 	<meta name="robots" content="index,follow" />
