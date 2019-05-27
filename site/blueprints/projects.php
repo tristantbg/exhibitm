@@ -1,6 +1,10 @@
 <?php if(!defined('KIRBY')) exit ?>
 
 title: Projects
+options:
+  delete: false
+  url: false
+  template: false
 pages:
   template:
     - artist
