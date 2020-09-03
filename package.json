@@ -17,7 +17,7 @@
     "flickity": "^2.0.10",
     "fullpage.js": "^2.9.6",
     "jquery-ias": "^2.2.2",
-    "lazysizes": "^4.0.0",
+    "lazysizes": "^5.2.1",
     "moveto": "^1.7.1"
   }
 }
