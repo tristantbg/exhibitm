@@ -288,11 +288,9 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
-fullpage.js@^2.9.6:
-  version "2.9.6"
-  resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-2.9.6.tgz#8ab8ea65fd99c3abd58f0d7be290b83fb1c0999d"
-  dependencies:
-    jquery ">=1.6.0"
+fullpage.js@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-4.0.5.tgz#033880e792610a28fe4f7c9ee49eff33a7b38e14"
 
 gaze@^1.0.0:
   version "1.1.2"
@@ -574,7 +572,7 @@ jquery-ias@^2.2.2:
   dependencies:
     jquery ">=1.12"
 
-jquery@>=1.12, jquery@>=1.6.0:
+jquery@>=1.12:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
